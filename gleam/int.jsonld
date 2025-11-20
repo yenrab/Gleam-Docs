@@ -1,0 +1,954 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_int_module",
+      "@type": "Module",
+      "name": "gleam.int",
+      "description": "Functions for working with integers.\n////\n//// ## Division by zero\n////\n//// In Erlang division by zero results in a crash, however Gleam does not have\n//// partial functions and operators in core so instead division by zero returns\n//// zero, a behaviour taken from Pony, Coq, and Lean.\n////\n//// This may seem unexpected at first, but it is no less mathematically valid\n//// than crashing or returning a special value. Division by zero is undefined\n//// in mathematics.",
+      "functions": [
+        {
+          "@id": "ex:gleam_int_absolute_value"
+        },
+        {
+          "@id": "ex:gleam_int_power"
+        },
+        {
+          "@id": "ex:gleam_int_square_root"
+        },
+        {
+          "@id": "ex:gleam_int_parse"
+        },
+        {
+          "@id": "ex:gleam_int_base_parse"
+        },
+        {
+          "@id": "ex:gleam_int_to_string"
+        },
+        {
+          "@id": "ex:gleam_int_to_base_string"
+        },
+        {
+          "@id": "ex:gleam_int_to_base2"
+        },
+        {
+          "@id": "ex:gleam_int_to_base8"
+        },
+        {
+          "@id": "ex:gleam_int_to_base16"
+        },
+        {
+          "@id": "ex:gleam_int_to_base36"
+        },
+        {
+          "@id": "ex:gleam_int_to_float"
+        },
+        {
+          "@id": "ex:gleam_int_clamp"
+        },
+        {
+          "@id": "ex:gleam_int_compare"
+        },
+        {
+          "@id": "ex:gleam_int_min"
+        },
+        {
+          "@id": "ex:gleam_int_max"
+        },
+        {
+          "@id": "ex:gleam_int_is_even"
+        },
+        {
+          "@id": "ex:gleam_int_is_odd"
+        },
+        {
+          "@id": "ex:gleam_int_negate"
+        },
+        {
+          "@id": "ex:gleam_int_sum"
+        },
+        {
+          "@id": "ex:gleam_int_product"
+        },
+        {
+          "@id": "ex:gleam_int_digits"
+        },
+        {
+          "@id": "ex:gleam_int_undigits"
+        },
+        {
+          "@id": "ex:gleam_int_random"
+        },
+        {
+          "@id": "ex:gleam_int_divide"
+        },
+        {
+          "@id": "ex:gleam_int_remainder"
+        },
+        {
+          "@id": "ex:gleam_int_modulo"
+        },
+        {
+          "@id": "ex:gleam_int_floor_divide"
+        },
+        {
+          "@id": "ex:gleam_int_add"
+        },
+        {
+          "@id": "ex:gleam_int_multiply"
+        },
+        {
+          "@id": "ex:gleam_int_subtract"
+        },
+        {
+          "@id": "ex:gleam_int_bitwise_and"
+        },
+        {
+          "@id": "ex:gleam_int_bitwise_not"
+        },
+        {
+          "@id": "ex:gleam_int_bitwise_or"
+        },
+        {
+          "@id": "ex:gleam_int_bitwise_exclusive_or"
+        },
+        {
+          "@id": "ex:gleam_int_bitwise_shift_left"
+        },
+        {
+          "@id": "ex:gleam_int_bitwise_shift_right"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_absolute_value",
+      "@type": "Function",
+      "name": "absolute_value",
+      "module": "gleam.int",
+      "purpose": "Returns the absolute value of the input.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "absolute_value(-12)",
+      "examples": [
+        "absolute_value(-12)",
+        "absolute_value(10)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_power",
+      "@type": "Function",
+      "name": "power",
+      "module": "gleam.int",
+      "purpose": "Returns the results of the base being raised to the power of the",
+      "parameters": [
+        {
+          "name": "base",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "exponent",
+          "label": "of",
+          "type": "Float"
+        }
+      ],
+      "returnType": "Result(Float, Nil)",
+      "whyHelpful": "exponent, as a `Float`.",
+      "examples": [
+        "power(2, -1.0)",
+        "power(2, 2.0)",
+        "power(8, 1.5)",
+        "4 |> power(of: 2.0)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_square_root",
+      "@type": "Function",
+      "name": "square_root",
+      "module": "gleam.int",
+      "purpose": "Returns the square root of the input as a `Float`.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Result(Float, Nil)",
+      "whyHelpful": "square_root(4)",
+      "examples": [
+        "square_root(4)",
+        "square_root(-16)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_parse",
+      "@type": "Function",
+      "name": "parse",
+      "module": "gleam.int",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Result(Int, Nil)  /// Parses a given string as an int in a given base if possible. /// Supports only bases 2 to 36, for values outside of which this function returns an `Error(Nil)`. /// /// ## Examples /// /// ```gleam /// base_parse(\"10\", 2) /// // -> Ok(2) /// ``` /// /// ```gleam /// base_parse(\"30\", 16) /// // -> Ok(48) /// ``` /// /// ```gleam /// base_parse(\"1C\", 36) /// // -> Ok(48) /// ``` /// /// ```gleam /// base_parse(\"48\", 1) /// // -> Error(Nil) /// ``` /// /// ```gleam /// base_parse(\"48\", 37) /// // -> Error(Nil) /// ``` /// pub fn base_parse(string: String, base: Int) -> Result(Int, Nil)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_int_base_parse",
+      "@type": "Function",
+      "name": "base_parse",
+      "module": "gleam.int",
+      "purpose": "Parses a given string as an int in a given base if possible.",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        },
+        {
+          "name": "base",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Result(Int, Nil)",
+      "whyHelpful": "Supports only bases 2 to 36, for values outside of which this function returns an `Error(Nil)`.",
+      "examples": [
+        "base_parse(\"10\", 2)",
+        "base_parse(\"30\", 16)",
+        "base_parse(\"1C\", 36)",
+        "base_parse(\"48\", 1)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_to_string",
+      "@type": "Function",
+      "name": "to_string",
+      "module": "gleam.int",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "String  /// Prints a given int to a string using the base number provided. /// Supports only bases 2 to 36, for values outside of which this function returns an `Error(Nil)`. /// For common bases (2, 8, 16, 36), use the `to_baseN` functions. /// /// ## Examples /// /// ```gleam /// to_base_string(2, 2) /// // -> Ok(\"10\") /// ``` /// /// ```gleam /// to_base_string(48, 16) /// // -> Ok(\"30\") /// ``` /// /// ```gleam /// to_base_string(48, 36) /// // -> Ok(\"1C\") /// ``` /// /// ```gleam /// to_base_string(48, 1) /// // -> Error(Nil) /// ``` /// /// ```gleam /// to_base_string(48, 37) /// // -> Error(Nil) /// ``` /// pub fn to_base_string(x: Int, base: Int) -> Result(String, Nil)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_int_to_base_string",
+      "@type": "Function",
+      "name": "to_base_string",
+      "module": "gleam.int",
+      "purpose": "Prints a given int to a string using the base number provided.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "base",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Result(String, Nil)",
+      "whyHelpful": "this function returns an `Error(Nil)`. For common bases (2, 8, 16, 36), use the `to_baseN` functions.",
+      "examples": [
+        "to_base_string(2, 2)",
+        "to_base_string(48, 16)",
+        "to_base_string(48, 36)",
+        "to_base_string(48, 1)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_to_base2",
+      "@type": "Function",
+      "name": "to_base2",
+      "module": "gleam.int",
+      "purpose": "Prints a given int to a string using base-2.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "to_base2(2)",
+      "examples": [
+        "to_base2(2)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_to_base8",
+      "@type": "Function",
+      "name": "to_base8",
+      "module": "gleam.int",
+      "purpose": "Prints a given int to a string using base-8.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "to_base8(15)",
+      "examples": [
+        "to_base8(15)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_to_base16",
+      "@type": "Function",
+      "name": "to_base16",
+      "module": "gleam.int",
+      "purpose": "Prints a given int to a string using base-16.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "to_base16(48)",
+      "examples": [
+        "to_base16(48)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_to_base36",
+      "@type": "Function",
+      "name": "to_base36",
+      "module": "gleam.int",
+      "purpose": "Prints a given int to a string using base-36.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "to_base36(48)",
+      "examples": [
+        "to_base36(48)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_to_float",
+      "@type": "Function",
+      "name": "to_float",
+      "module": "gleam.int",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Float  /// Restricts an int between a lower and upper bound. /// /// ## Examples /// /// ```gleam /// clamp(40, min: 50, max: 60) /// // -> 50 /// ``` /// pub fn clamp(x: Int, min min_bound: Int, max max_bound: Int) -> Int",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_int_clamp",
+      "@type": "Function",
+      "name": "clamp",
+      "module": "gleam.int",
+      "purpose": "Restricts an int between a lower and upper bound.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "min_bound",
+          "label": "min",
+          "type": "Int"
+        },
+        {
+          "name": "max_bound",
+          "label": "max",
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "clamp(40, min: 50, max: 60)",
+      "examples": [
+        "clamp(40, min: 50, max: 60)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_compare",
+      "@type": "Function",
+      "name": "compare",
+      "module": "gleam.int",
+      "purpose": "Compares two ints, returning an order.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "b",
+          "label": "with",
+          "type": "Int"
+        }
+      ],
+      "returnType": "Order",
+      "whyHelpful": "compare(2, 3)",
+      "examples": [
+        "compare(2, 3)",
+        "compare(4, 3)",
+        "compare(3, 3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_min",
+      "@type": "Function",
+      "name": "min",
+      "module": "gleam.int",
+      "purpose": "Compares two ints, returning the smaller of the two.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "",
+      "examples": [
+        "min(2, 3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_max",
+      "@type": "Function",
+      "name": "max",
+      "module": "gleam.int",
+      "purpose": "Compares two ints, returning the larger of the two.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "",
+      "examples": [
+        "max(2, 3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_is_even",
+      "@type": "Function",
+      "name": "is_even",
+      "module": "gleam.int",
+      "purpose": "Returns whether the value provided is even.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "// -> False",
+      "examples": [
+        "is_even(2)",
+        "is_even(3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_is_odd",
+      "@type": "Function",
+      "name": "is_odd",
+      "module": "gleam.int",
+      "purpose": "Returns whether the value provided is odd.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "// -> False",
+      "examples": [
+        "is_odd(3)",
+        "is_odd(2)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_negate",
+      "@type": "Function",
+      "name": "negate",
+      "module": "gleam.int",
+      "purpose": "Returns the negative of the value provided.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "",
+      "examples": [
+        "negate(1)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_sum",
+      "@type": "Function",
+      "name": "sum",
+      "module": "gleam.int",
+      "purpose": "Sums a list of ints.",
+      "parameters": [
+        {
+          "name": "numbers",
+          "label": null,
+          "type": "List(Int)"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "sum([1, 2, 3])",
+      "examples": [
+        "sum([1, 2, 3])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_product",
+      "@type": "Function",
+      "name": "product",
+      "module": "gleam.int",
+      "purpose": "Multiplies a list of ints and returns the product.",
+      "parameters": [
+        {
+          "name": "numbers",
+          "label": null,
+          "type": "List(Int)"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "product([2, 3, 4])",
+      "examples": [
+        "product([2, 3, 4])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_digits",
+      "@type": "Function",
+      "name": "digits",
+      "module": "gleam.int",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "base",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Result(List(Int), Nil)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_int_undigits",
+      "@type": "Function",
+      "name": "undigits",
+      "module": "gleam.int",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "numbers",
+          "label": null,
+          "type": "List(Int)"
+        },
+        {
+          "name": "base",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Result(Int, Nil)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_int_random",
+      "@type": "Function",
+      "name": "random",
+      "module": "gleam.int",
+      "purpose": "Generates a random int between zero and the given maximum.",
+      "parameters": [
+        {
+          "name": "max",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "The lower number is inclusive, the upper number is exclusive.",
+      "examples": [
+        "random(10)",
+        "random(1)",
+        "random(-1)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_divide",
+      "@type": "Function",
+      "name": "divide",
+      "module": "gleam.int",
+      "purpose": "Performs a truncated integer division.",
+      "parameters": [
+        {
+          "name": "dividend",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "divisor",
+          "label": "by",
+          "type": "Int"
+        }
+      ],
+      "returnType": "Result(Int, Nil)",
+      "whyHelpful": "Returns division of the inputs as a `Result`: If the given divisor equals",
+      "examples": [
+        "divide(0, 1)",
+        "divide(1, 0)",
+        "divide(5, 2)",
+        "divide(-99, 2)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_remainder",
+      "@type": "Function",
+      "name": "remainder",
+      "module": "gleam.int",
+      "purpose": "Computes the remainder of an integer division of inputs as a `Result`.",
+      "parameters": [
+        {
+          "name": "dividend",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "divisor",
+          "label": "by",
+          "type": "Int"
+        }
+      ],
+      "returnType": "Result(Int, Nil)",
+      "whyHelpful": "this function returns an `Error`. Most the time you will want to use the `%` operator instead of this function.",
+      "examples": [
+        "remainder(3, 2)",
+        "remainder(1, 0)",
+        "remainder(10, -1)",
+        "remainder(13, by: 3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_modulo",
+      "@type": "Function",
+      "name": "modulo",
+      "module": "gleam.int",
+      "purpose": "Computes the modulo of an integer division of inputs as a `Result`.",
+      "parameters": [
+        {
+          "name": "dividend",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "divisor",
+          "label": "by",
+          "type": "Int"
+        }
+      ],
+      "returnType": "Result(Int, Nil)",
+      "whyHelpful": "this function returns an `Error`. Most the time you will want to use the `%` operator instead of this function.",
+      "examples": [
+        "modulo(3, 2)",
+        "modulo(1, 0)",
+        "modulo(10, -1)",
+        "modulo(13, by: 3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_floor_divide",
+      "@type": "Function",
+      "name": "floor_divide",
+      "module": "gleam.int",
+      "purpose": "Performs a *floored* integer division, which means that the result will",
+      "parameters": [
+        {
+          "name": "dividend",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "divisor",
+          "label": "by",
+          "type": "Int"
+        }
+      ],
+      "returnType": "Result(Int, Nil)",
+      "whyHelpful": "always be rounded towards negative infinity.",
+      "examples": [
+        "floor_divide(1, 0)",
+        "floor_divide(5, 2)",
+        "floor_divide(6, -4)",
+        "floor_divide(-99, 2)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_add",
+      "@type": "Function",
+      "name": "add",
+      "module": "gleam.int",
+      "purpose": "Adds two integers together.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "It's the function equivalent of the `+` operator.",
+      "examples": [
+        "add(1, 2)",
+        "list.fold([1, 2, 3], 0, add)",
+        "3 |> add(2)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_multiply",
+      "@type": "Function",
+      "name": "multiply",
+      "module": "gleam.int",
+      "purpose": "Multiplies two integers together.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "It's the function equivalent of the `*` operator.",
+      "examples": [
+        "multiply(2, 4)",
+        "list.fold([2, 3, 4], 1, multiply)",
+        "3 |> multiply(2)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_subtract",
+      "@type": "Function",
+      "name": "subtract",
+      "module": "gleam.int",
+      "purpose": "Subtracts one int from another.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "It's the function equivalent of the `-` operator.",
+      "examples": [
+        "subtract(3, 1)",
+        "list.fold([1, 2, 3], 10, subtract)",
+        "3 |> subtract(2)",
+        "3 |> subtract(2, _)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_int_bitwise_and",
+      "@type": "Function",
+      "name": "bitwise_and",
+      "module": "gleam.int",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "y",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int  /// Calculates the bitwise NOT of its argument. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bnot\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_not\") pub fn bitwise_not(x: Int) -> Int  /// Calculates the bitwise OR of its arguments. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bor\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_or\") pub fn bitwise_or(x: Int, y: Int) -> Int  /// Calculates the bitwise XOR of its arguments. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bxor\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_exclusive_or\") pub fn bitwise_exclusive_or(x: Int, y: Int) -> Int  /// Calculates the result of an arithmetic left bitshift. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bsl\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_shift_left\") pub fn bitwise_shift_left(x: Int, y: Int) -> Int  /// Calculates the result of an arithmetic right bitshift. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bsr\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_shift_right\") pub fn bitwise_shift_right(x: Int, y: Int) -> Int",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_int_bitwise_not",
+      "@type": "Function",
+      "name": "bitwise_not",
+      "module": "gleam.int",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int  /// Calculates the bitwise OR of its arguments. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bor\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_or\") pub fn bitwise_or(x: Int, y: Int) -> Int  /// Calculates the bitwise XOR of its arguments. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bxor\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_exclusive_or\") pub fn bitwise_exclusive_or(x: Int, y: Int) -> Int  /// Calculates the result of an arithmetic left bitshift. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bsl\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_shift_left\") pub fn bitwise_shift_left(x: Int, y: Int) -> Int  /// Calculates the result of an arithmetic right bitshift. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bsr\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_shift_right\") pub fn bitwise_shift_right(x: Int, y: Int) -> Int",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_int_bitwise_or",
+      "@type": "Function",
+      "name": "bitwise_or",
+      "module": "gleam.int",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "y",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int  /// Calculates the bitwise XOR of its arguments. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bxor\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_exclusive_or\") pub fn bitwise_exclusive_or(x: Int, y: Int) -> Int  /// Calculates the result of an arithmetic left bitshift. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bsl\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_shift_left\") pub fn bitwise_shift_left(x: Int, y: Int) -> Int  /// Calculates the result of an arithmetic right bitshift. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bsr\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_shift_right\") pub fn bitwise_shift_right(x: Int, y: Int) -> Int",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_int_bitwise_exclusive_or",
+      "@type": "Function",
+      "name": "bitwise_exclusive_or",
+      "module": "gleam.int",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "y",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int  /// Calculates the result of an arithmetic left bitshift. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bsl\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_shift_left\") pub fn bitwise_shift_left(x: Int, y: Int) -> Int  /// Calculates the result of an arithmetic right bitshift. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bsr\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_shift_right\") pub fn bitwise_shift_right(x: Int, y: Int) -> Int",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_int_bitwise_shift_left",
+      "@type": "Function",
+      "name": "bitwise_shift_left",
+      "module": "gleam.int",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "y",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int  /// Calculates the result of an arithmetic right bitshift. /// /// The exact behaviour of this function depends on the target platform. /// On Erlang it is equivalent to bitwise operations on ints, on JavaScript it /// is equivalent to bitwise operations on big-ints. /// @external(erlang, \"erlang\", \"bsr\") @external(javascript, \"../gleam_stdlib.mjs\", \"bitwise_shift_right\") pub fn bitwise_shift_right(x: Int, y: Int) -> Int",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_int_bitwise_shift_right",
+      "@type": "Function",
+      "name": "bitwise_shift_right",
+      "module": "gleam.int",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Int"
+        },
+        {
+          "name": "y",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "",
+      "examples": []
+    }
+  ]
+}

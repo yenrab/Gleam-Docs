@@ -1,0 +1,84 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:Result",
+      "@type": "Type",
+      "name": "Result",
+      "description": "Represents the result of something that may succeed or not. Ok means it was successful, Error means it was not successful.",
+      "constructors": [
+        {
+          "name": "Ok",
+          "description": "Successful result",
+          "parameters": [
+            "a"
+          ]
+        },
+        {
+          "name": "Error",
+          "description": "Error result",
+          "parameters": [
+            "e"
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "ex:Option",
+      "@type": "Type",
+      "name": "Option",
+      "description": "Represents a value that may be present or not. Some means the value is present, None means the value is not.",
+      "constructors": [
+        {
+          "name": "Some",
+          "description": "Value is present",
+          "parameters": [
+            "a"
+          ]
+        },
+        {
+          "name": "None",
+          "description": "Value is not present",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "@id": "ex:List",
+      "@type": "Type",
+      "name": "List",
+      "description": "An ordered sequence of elements. New elements can be added and removed from the front in constant time.",
+      "constructors": []
+    },
+    {
+      "@id": "ex:Dict",
+      "@type": "Type",
+      "name": "Dict",
+      "description": "A dictionary of keys and values. Each key can only be present once. Dicts are not ordered.",
+      "constructors": []
+    },
+    {
+      "@id": "ex:Order",
+      "@type": "Type",
+      "name": "Order",
+      "description": "Represents the ordering relationship between two values.",
+      "constructors": [
+        {
+          "name": "Lt",
+          "description": "Less than"
+        },
+        {
+          "name": "Eq",
+          "description": "Equal"
+        },
+        {
+          "name": "Gt",
+          "description": "Greater than"
+        }
+      ]
+    }
+  ]
+}

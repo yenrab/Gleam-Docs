@@ -1,0 +1,210 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_dynamic_module",
+      "@type": "Module",
+      "name": "gleam.dynamic",
+      "description": "",
+      "functions": [
+        {
+          "@id": "ex:gleam_dynamic_classify"
+        },
+        {
+          "@id": "ex:gleam_dynamic_bool"
+        },
+        {
+          "@id": "ex:gleam_dynamic_string"
+        },
+        {
+          "@id": "ex:gleam_dynamic_float"
+        },
+        {
+          "@id": "ex:gleam_dynamic_int"
+        },
+        {
+          "@id": "ex:gleam_dynamic_bit_array"
+        },
+        {
+          "@id": "ex:gleam_dynamic_list"
+        },
+        {
+          "@id": "ex:gleam_dynamic_array"
+        },
+        {
+          "@id": "ex:gleam_dynamic_properties"
+        },
+        {
+          "@id": "ex:gleam_dynamic_nil"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_dynamic_classify",
+      "@type": "Function",
+      "name": "classify",
+      "module": "gleam.dynamic",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "data",
+          "label": null,
+          "type": "Dynamic"
+        }
+      ],
+      "returnType": "String  /// Create a dynamic value from a bool. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn bool(a: Bool) -> Dynamic  /// Create a dynamic value from a string. /// /// On Erlang this will be a binary string rather than a character list. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn string(a: String) -> Dynamic  /// Create a dynamic value from a float. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn float(a: Float) -> Dynamic  /// Create a dynamic value from an int. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn int(a: Int) -> Dynamic  /// Create a dynamic value from a bit array. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn bit_array(a: BitArray) -> Dynamic  /// Create a dynamic value from a list. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn list(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value from a list, converting it to a sequential runtime /// format rather than the regular list format. /// /// On Erlang this will be a tuple, on JavaScript this will be an array. /// @external(erlang, \"erlang\", \"list_to_tuple\") @external(javascript, \"../gleam_stdlib.mjs\", \"list_to_array\") pub fn array(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value made an unordered series of keys and values, where /// the keys are unique. /// /// On Erlang this will be a map, on JavaScript this will be a Gleam dict /// object. /// pub fn properties(entries: List(#(Dynamic, Dynamic))) -> Dynamic",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_dynamic_bool",
+      "@type": "Function",
+      "name": "bool",
+      "module": "gleam.dynamic",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Bool"
+        }
+      ],
+      "returnType": "Dynamic  /// Create a dynamic value from a string. /// /// On Erlang this will be a binary string rather than a character list. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn string(a: String) -> Dynamic  /// Create a dynamic value from a float. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn float(a: Float) -> Dynamic  /// Create a dynamic value from an int. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn int(a: Int) -> Dynamic  /// Create a dynamic value from a bit array. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn bit_array(a: BitArray) -> Dynamic  /// Create a dynamic value from a list. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn list(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value from a list, converting it to a sequential runtime /// format rather than the regular list format. /// /// On Erlang this will be a tuple, on JavaScript this will be an array. /// @external(erlang, \"erlang\", \"list_to_tuple\") @external(javascript, \"../gleam_stdlib.mjs\", \"list_to_array\") pub fn array(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value made an unordered series of keys and values, where /// the keys are unique. /// /// On Erlang this will be a map, on JavaScript this will be a Gleam dict /// object. /// pub fn properties(entries: List(#(Dynamic, Dynamic))) -> Dynamic",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_dynamic_string",
+      "@type": "Function",
+      "name": "string",
+      "module": "gleam.dynamic",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Dynamic  /// Create a dynamic value from a float. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn float(a: Float) -> Dynamic  /// Create a dynamic value from an int. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn int(a: Int) -> Dynamic  /// Create a dynamic value from a bit array. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn bit_array(a: BitArray) -> Dynamic  /// Create a dynamic value from a list. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn list(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value from a list, converting it to a sequential runtime /// format rather than the regular list format. /// /// On Erlang this will be a tuple, on JavaScript this will be an array. /// @external(erlang, \"erlang\", \"list_to_tuple\") @external(javascript, \"../gleam_stdlib.mjs\", \"list_to_array\") pub fn array(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value made an unordered series of keys and values, where /// the keys are unique. /// /// On Erlang this will be a map, on JavaScript this will be a Gleam dict /// object. /// pub fn properties(entries: List(#(Dynamic, Dynamic))) -> Dynamic",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_dynamic_float",
+      "@type": "Function",
+      "name": "float",
+      "module": "gleam.dynamic",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Dynamic  /// Create a dynamic value from an int. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn int(a: Int) -> Dynamic  /// Create a dynamic value from a bit array. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn bit_array(a: BitArray) -> Dynamic  /// Create a dynamic value from a list. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn list(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value from a list, converting it to a sequential runtime /// format rather than the regular list format. /// /// On Erlang this will be a tuple, on JavaScript this will be an array. /// @external(erlang, \"erlang\", \"list_to_tuple\") @external(javascript, \"../gleam_stdlib.mjs\", \"list_to_array\") pub fn array(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value made an unordered series of keys and values, where /// the keys are unique. /// /// On Erlang this will be a map, on JavaScript this will be a Gleam dict /// object. /// pub fn properties(entries: List(#(Dynamic, Dynamic))) -> Dynamic",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_dynamic_int",
+      "@type": "Function",
+      "name": "int",
+      "module": "gleam.dynamic",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Dynamic  /// Create a dynamic value from a bit array. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn bit_array(a: BitArray) -> Dynamic  /// Create a dynamic value from a list. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn list(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value from a list, converting it to a sequential runtime /// format rather than the regular list format. /// /// On Erlang this will be a tuple, on JavaScript this will be an array. /// @external(erlang, \"erlang\", \"list_to_tuple\") @external(javascript, \"../gleam_stdlib.mjs\", \"list_to_array\") pub fn array(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value made an unordered series of keys and values, where /// the keys are unique. /// /// On Erlang this will be a map, on JavaScript this will be a Gleam dict /// object. /// pub fn properties(entries: List(#(Dynamic, Dynamic))) -> Dynamic",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_dynamic_bit_array",
+      "@type": "Function",
+      "name": "bit_array",
+      "module": "gleam.dynamic",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "Dynamic  /// Create a dynamic value from a list. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn list(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value from a list, converting it to a sequential runtime /// format rather than the regular list format. /// /// On Erlang this will be a tuple, on JavaScript this will be an array. /// @external(erlang, \"erlang\", \"list_to_tuple\") @external(javascript, \"../gleam_stdlib.mjs\", \"list_to_array\") pub fn array(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value made an unordered series of keys and values, where /// the keys are unique. /// /// On Erlang this will be a map, on JavaScript this will be a Gleam dict /// object. /// pub fn properties(entries: List(#(Dynamic, Dynamic))) -> Dynamic",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_dynamic_list",
+      "@type": "Function",
+      "name": "list",
+      "module": "gleam.dynamic",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "List(Dynamic)"
+        }
+      ],
+      "returnType": "Dynamic  /// Create a dynamic value from a list, converting it to a sequential runtime /// format rather than the regular list format. /// /// On Erlang this will be a tuple, on JavaScript this will be an array. /// @external(erlang, \"erlang\", \"list_to_tuple\") @external(javascript, \"../gleam_stdlib.mjs\", \"list_to_array\") pub fn array(a: List(Dynamic)) -> Dynamic  /// Create a dynamic value made an unordered series of keys and values, where /// the keys are unique. /// /// On Erlang this will be a map, on JavaScript this will be a Gleam dict /// object. /// pub fn properties(entries: List(#(Dynamic, Dynamic))) -> Dynamic",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_dynamic_array",
+      "@type": "Function",
+      "name": "array",
+      "module": "gleam.dynamic",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "List(Dynamic)"
+        }
+      ],
+      "returnType": "Dynamic  /// Create a dynamic value made an unordered series of keys and values, where /// the keys are unique. /// /// On Erlang this will be a map, on JavaScript this will be a Gleam dict /// object. /// pub fn properties(entries: List(#(Dynamic, Dynamic))) -> Dynamic",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_dynamic_properties",
+      "@type": "Function",
+      "name": "properties",
+      "module": "gleam.dynamic",
+      "purpose": "Create a dynamic value made an unordered series of keys and values, where",
+      "parameters": [
+        {
+          "name": "entries",
+          "label": null,
+          "type": "List(#(Dynamic, Dynamic))"
+        }
+      ],
+      "returnType": "Dynamic",
+      "whyHelpful": "the keys are unique.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_dynamic_nil",
+      "@type": "Function",
+      "name": "nil",
+      "module": "gleam.dynamic",
+      "purpose": "A dynamic value representing nothing.",
+      "parameters": [],
+      "returnType": "Dynamic",
+      "whyHelpful": "On Erlang this will be the atom `nil`, on JavaScript this will be",
+      "examples": []
+    }
+  ]
+}

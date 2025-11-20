@@ -1,0 +1,420 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_bit_array_module",
+      "@type": "Module",
+      "name": "gleam.bit_array",
+      "description": "BitArrays are a sequence of binary data of any length.",
+      "functions": [
+        {
+          "@id": "ex:gleam_bit_array_from_string"
+        },
+        {
+          "@id": "ex:gleam_bit_array_bit_size"
+        },
+        {
+          "@id": "ex:gleam_bit_array_byte_size"
+        },
+        {
+          "@id": "ex:gleam_bit_array_pad_to_bytes"
+        },
+        {
+          "@id": "ex:gleam_bit_array_append"
+        },
+        {
+          "@id": "ex:gleam_bit_array_slice"
+        },
+        {
+          "@id": "ex:gleam_bit_array_is_utf8"
+        },
+        {
+          "@id": "ex:gleam_bit_array_to_string"
+        },
+        {
+          "@id": "ex:gleam_bit_array_concat"
+        },
+        {
+          "@id": "ex:gleam_bit_array_base64_encode"
+        },
+        {
+          "@id": "ex:gleam_bit_array_base64_decode"
+        },
+        {
+          "@id": "ex:gleam_bit_array_base64_url_encode"
+        },
+        {
+          "@id": "ex:gleam_bit_array_base64_url_decode"
+        },
+        {
+          "@id": "ex:gleam_bit_array_base16_encode"
+        },
+        {
+          "@id": "ex:gleam_bit_array_base16_decode"
+        },
+        {
+          "@id": "ex:gleam_bit_array_inspect"
+        },
+        {
+          "@id": "ex:gleam_bit_array_compare"
+        },
+        {
+          "@id": "ex:gleam_bit_array_starts_with"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_bit_array_from_string",
+      "@type": "Function",
+      "name": "from_string",
+      "module": "gleam.bit_array",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "BitArray  /// Returns an integer which is the number of bits in the bit array. /// @external(erlang, \"erlang\", \"bit_size\") @external(javascript, \"../gleam_stdlib.mjs\", \"bit_array_bit_size\") pub fn bit_size(x: BitArray) -> Int  /// Returns an integer which is the number of bytes in the bit array. /// @external(erlang, \"erlang\", \"byte_size\") @external(javascript, \"../gleam_stdlib.mjs\", \"bit_array_byte_size\") pub fn byte_size(x: BitArray) -> Int  /// Pads a bit array with zeros so that it is a whole number of bytes. /// @external(erlang, \"gleam_stdlib\", \"bit_array_pad_to_bytes\") @external(javascript, \"../gleam_stdlib.mjs\", \"bit_array_pad_to_bytes\") pub fn pad_to_bytes(x: BitArray) -> BitArray  /// Creates a new bit array by joining two bit arrays. /// /// ## Examples /// /// ```gleam /// append(to: from_string(\"butter\"), suffix: from_string(\"fly\")) /// // -> from_string(\"butterfly\") /// ``` /// pub fn append(to first: BitArray, suffix second: BitArray) -> BitArray",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_bit_size",
+      "@type": "Function",
+      "name": "bit_size",
+      "module": "gleam.bit_array",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "Int  /// Returns an integer which is the number of bytes in the bit array. /// @external(erlang, \"erlang\", \"byte_size\") @external(javascript, \"../gleam_stdlib.mjs\", \"bit_array_byte_size\") pub fn byte_size(x: BitArray) -> Int  /// Pads a bit array with zeros so that it is a whole number of bytes. /// @external(erlang, \"gleam_stdlib\", \"bit_array_pad_to_bytes\") @external(javascript, \"../gleam_stdlib.mjs\", \"bit_array_pad_to_bytes\") pub fn pad_to_bytes(x: BitArray) -> BitArray  /// Creates a new bit array by joining two bit arrays. /// /// ## Examples /// /// ```gleam /// append(to: from_string(\"butter\"), suffix: from_string(\"fly\")) /// // -> from_string(\"butterfly\") /// ``` /// pub fn append(to first: BitArray, suffix second: BitArray) -> BitArray",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_byte_size",
+      "@type": "Function",
+      "name": "byte_size",
+      "module": "gleam.bit_array",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "Int  /// Pads a bit array with zeros so that it is a whole number of bytes. /// @external(erlang, \"gleam_stdlib\", \"bit_array_pad_to_bytes\") @external(javascript, \"../gleam_stdlib.mjs\", \"bit_array_pad_to_bytes\") pub fn pad_to_bytes(x: BitArray) -> BitArray  /// Creates a new bit array by joining two bit arrays. /// /// ## Examples /// /// ```gleam /// append(to: from_string(\"butter\"), suffix: from_string(\"fly\")) /// // -> from_string(\"butterfly\") /// ``` /// pub fn append(to first: BitArray, suffix second: BitArray) -> BitArray",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_pad_to_bytes",
+      "@type": "Function",
+      "name": "pad_to_bytes",
+      "module": "gleam.bit_array",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "BitArray  /// Creates a new bit array by joining two bit arrays. /// /// ## Examples /// /// ```gleam /// append(to: from_string(\"butter\"), suffix: from_string(\"fly\")) /// // -> from_string(\"butterfly\") /// ``` /// pub fn append(to first: BitArray, suffix second: BitArray) -> BitArray",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_append",
+      "@type": "Function",
+      "name": "append",
+      "module": "gleam.bit_array",
+      "purpose": "Creates a new bit array by joining two bit arrays.",
+      "parameters": [
+        {
+          "name": "first",
+          "label": "to",
+          "type": "BitArray"
+        },
+        {
+          "name": "second",
+          "label": "suffix",
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "BitArray",
+      "whyHelpful": "append(to: from_string(\"butter\"), suffix: from_string(\"fly\"))",
+      "examples": [
+        "append(to: from_string(\"butter\"), suffix: from_string(\"fly\"))"
+      ]
+    },
+    {
+      "@id": "ex:gleam_bit_array_slice",
+      "@type": "Function",
+      "name": "slice",
+      "module": "gleam.bit_array",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": "from",
+          "type": "BitArray"
+        },
+        {
+          "name": "position",
+          "label": "at",
+          "type": "Int"
+        },
+        {
+          "name": "length",
+          "label": "take",
+          "type": "Int"
+        }
+      ],
+      "returnType": "Result(BitArray, Nil)  /// Tests to see whether a bit array is valid UTF-8. /// pub fn is_utf8(bits: BitArray) -> Bool",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_is_utf8",
+      "@type": "Function",
+      "name": "is_utf8",
+      "module": "gleam.bit_array",
+      "purpose": "Tests to see whether a bit array is valid UTF-8.",
+      "parameters": [
+        {
+          "name": "bits",
+          "label": null,
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_to_string",
+      "@type": "Function",
+      "name": "to_string",
+      "module": "gleam.bit_array",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "bits",
+          "label": null,
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "Result(String, Nil)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_concat",
+      "@type": "Function",
+      "name": "concat",
+      "module": "gleam.bit_array",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "bit_arrays",
+          "label": null,
+          "type": "List(BitArray)"
+        }
+      ],
+      "returnType": "BitArray  /// Encodes a BitArray into a base 64 encoded string. /// /// If the bit array does not contain a whole number of bytes then it is padded /// with zero bits prior to being encoded. /// @external(erlang, \"gleam_stdlib\", \"base64_encode\") @external(javascript, \"../gleam_stdlib.mjs\", \"base64_encode\") pub fn base64_encode(input: BitArray, padding: Bool) -> String  /// Decodes a base 64 encoded string into a `BitArray`. /// pub fn base64_decode(encoded: String) -> Result(BitArray, Nil)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_base64_encode",
+      "@type": "Function",
+      "name": "base64_encode",
+      "module": "gleam.bit_array",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "input",
+          "label": null,
+          "type": "BitArray"
+        },
+        {
+          "name": "padding",
+          "label": null,
+          "type": "Bool"
+        }
+      ],
+      "returnType": "String  /// Decodes a base 64 encoded string into a `BitArray`. /// pub fn base64_decode(encoded: String) -> Result(BitArray, Nil)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_base64_decode",
+      "@type": "Function",
+      "name": "base64_decode",
+      "module": "gleam.bit_array",
+      "purpose": "Decodes a base 64 encoded string into a `BitArray`.",
+      "parameters": [
+        {
+          "name": "encoded",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Result(BitArray, Nil)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_base64_url_encode",
+      "@type": "Function",
+      "name": "base64_url_encode",
+      "module": "gleam.bit_array",
+      "purpose": "Encodes a `BitArray` into a base 64 encoded string with URL and filename",
+      "parameters": [
+        {
+          "name": "input",
+          "label": null,
+          "type": "BitArray"
+        },
+        {
+          "name": "padding",
+          "label": null,
+          "type": "Bool"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "safe alphabet.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_base64_url_decode",
+      "@type": "Function",
+      "name": "base64_url_decode",
+      "module": "gleam.bit_array",
+      "purpose": "Decodes a base 64 encoded string with URL and filename safe alphabet into a",
+      "parameters": [
+        {
+          "name": "encoded",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Result(BitArray, Nil)",
+      "whyHelpful": "`BitArray`.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_base16_encode",
+      "@type": "Function",
+      "name": "base16_encode",
+      "module": "gleam.bit_array",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "input",
+          "label": null,
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "String  /// Decodes a base 16 encoded string into a `BitArray`. /// @external(erlang, \"gleam_stdlib\", \"base16_decode\") @external(javascript, \"../gleam_stdlib.mjs\", \"base16_decode\") pub fn base16_decode(input: String) -> Result(BitArray, Nil)  /// Converts a bit array to a string containing the decimal value of each byte. /// /// Use this over `string.inspect` when you have a bit array you want printed /// in the array syntax even if it is valid UTF-8. /// /// ## Examples /// /// ```gleam /// inspect(<<0, 20, 0x20, 255>>) /// // -> \"<<0, 20, 32, 255>>\" /// /// inspect(<<100, 5:3>>) /// // -> \"<<100, 5:size(3)>>\" /// ``` /// pub fn inspect(input: BitArray) -> String",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_base16_decode",
+      "@type": "Function",
+      "name": "base16_decode",
+      "module": "gleam.bit_array",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "input",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Result(BitArray, Nil)  /// Converts a bit array to a string containing the decimal value of each byte. /// /// Use this over `string.inspect` when you have a bit array you want printed /// in the array syntax even if it is valid UTF-8. /// /// ## Examples /// /// ```gleam /// inspect(<<0, 20, 0x20, 255>>) /// // -> \"<<0, 20, 32, 255>>\" /// /// inspect(<<100, 5:3>>) /// // -> \"<<100, 5:size(3)>>\" /// ``` /// pub fn inspect(input: BitArray) -> String",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bit_array_inspect",
+      "@type": "Function",
+      "name": "inspect",
+      "module": "gleam.bit_array",
+      "purpose": "Converts a bit array to a string containing the decimal value of each byte.",
+      "parameters": [
+        {
+          "name": "input",
+          "label": null,
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "this over `string.inspect` when you have a bit array you want printed in the array syntax even if it is valid UTF-8.",
+      "examples": [
+        "inspect(<<0, 20, 0x20, 255>>)",
+        "inspect(<<100, 5:3>>)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_bit_array_compare",
+      "@type": "Function",
+      "name": "compare",
+      "module": "gleam.bit_array",
+      "purpose": "Compare two bit arrays as sequences of bytes.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "BitArray"
+        },
+        {
+          "name": "b",
+          "label": "with",
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "order.Order",
+      "whyHelpful": "compare(<<1>>, <<2>>)",
+      "examples": [
+        "compare(<<1>>, <<2>>)",
+        "compare(<<\"AB\":utf8>>, <<\"AA\":utf8>>)",
+        "compare(<<1, 2:size(2)>>, with: <<1, 2:size(2)>>)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_bit_array_starts_with",
+      "@type": "Function",
+      "name": "starts_with",
+      "module": "gleam.bit_array",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "bits",
+          "label": null,
+          "type": "BitArray"
+        },
+        {
+          "name": "prefix",
+          "label": null,
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "",
+      "examples": []
+    }
+  ]
+}

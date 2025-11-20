@@ -1,0 +1,415 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_string_tree_module",
+      "@type": "Module",
+      "name": "gleam.string_tree",
+      "description": "",
+      "functions": [
+        {
+          "@id": "ex:gleam_string_tree_new"
+        },
+        {
+          "@id": "ex:gleam_string_tree_prepend"
+        },
+        {
+          "@id": "ex:gleam_string_tree_append"
+        },
+        {
+          "@id": "ex:gleam_string_tree_prepend_tree"
+        },
+        {
+          "@id": "ex:gleam_string_tree_append_tree"
+        },
+        {
+          "@id": "ex:gleam_string_tree_from_strings"
+        },
+        {
+          "@id": "ex:gleam_string_tree_concat"
+        },
+        {
+          "@id": "ex:gleam_string_tree_from_string"
+        },
+        {
+          "@id": "ex:gleam_string_tree_to_string"
+        },
+        {
+          "@id": "ex:gleam_string_tree_byte_size"
+        },
+        {
+          "@id": "ex:gleam_string_tree_join"
+        },
+        {
+          "@id": "ex:gleam_string_tree_lowercase"
+        },
+        {
+          "@id": "ex:gleam_string_tree_uppercase"
+        },
+        {
+          "@id": "ex:gleam_string_tree_reverse"
+        },
+        {
+          "@id": "ex:gleam_string_tree_split"
+        },
+        {
+          "@id": "ex:gleam_string_tree_replace"
+        },
+        {
+          "@id": "ex:gleam_string_tree_is_equal"
+        },
+        {
+          "@id": "ex:gleam_string_tree_is_empty"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_tree_new",
+      "@type": "Function",
+      "name": "new",
+      "module": "gleam.string_tree",
+      "purpose": "Create an empty `StringTree`. Useful as the start of a pipe chaining many",
+      "parameters": [],
+      "returnType": "StringTree",
+      "whyHelpful": "trees together.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_prepend",
+      "@type": "Function",
+      "name": "prepend",
+      "module": "gleam.string_tree",
+      "purpose": "Prepends a `String` onto the start of some `StringTree`.",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": "to",
+          "type": "StringTree"
+        },
+        {
+          "name": "prefix",
+          "label": "prefix",
+          "type": "String"
+        }
+      ],
+      "returnType": "StringTree",
+      "whyHelpful": "Runs in constant time.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_append",
+      "@type": "Function",
+      "name": "append",
+      "module": "gleam.string_tree",
+      "purpose": "Appends a `String` onto the end of some `StringTree`.",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": "to",
+          "type": "StringTree"
+        },
+        {
+          "name": "second",
+          "label": "suffix",
+          "type": "String"
+        }
+      ],
+      "returnType": "StringTree",
+      "whyHelpful": "Runs in constant time.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_prepend_tree",
+      "@type": "Function",
+      "name": "prepend_tree",
+      "module": "gleam.string_tree",
+      "purpose": "Prepends some `StringTree` onto the start of another.",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": "to",
+          "type": "StringTree"
+        },
+        {
+          "name": "prefix",
+          "label": "prefix",
+          "type": "StringTree"
+        }
+      ],
+      "returnType": "StringTree",
+      "whyHelpful": "Runs in constant time.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_append_tree",
+      "@type": "Function",
+      "name": "append_tree",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": "to",
+          "type": "StringTree"
+        },
+        {
+          "name": "suffix",
+          "label": "suffix",
+          "type": "StringTree"
+        }
+      ],
+      "returnType": "StringTree  /// Converts a list of strings into a `StringTree`. /// /// Runs in constant time. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"concat\") pub fn from_strings(strings: List(String)) -> StringTree  /// Joins a list of trees into a single tree. /// /// Runs in constant time. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"concat\") pub fn concat(trees: List(StringTree)) -> StringTree  /// Converts a string into a `StringTree`. /// /// Runs in constant time. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn from_string(string: String) -> StringTree  /// Turns a `StringTree` into a `String` /// /// This function is implemented natively by the virtual machine and is highly /// optimised. /// @external(erlang, \"unicode\", \"characters_to_binary\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn to_string(tree: StringTree) -> String  /// Returns the size of the `StringTree` in bytes. /// @external(erlang, \"erlang\", \"iolist_size\") @external(javascript, \"../gleam_stdlib.mjs\", \"length\") pub fn byte_size(tree: StringTree) -> Int  /// Joins the given trees into a new tree separated with the given string. /// pub fn join(trees: List(StringTree), with sep: String) -> StringTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_from_strings",
+      "@type": "Function",
+      "name": "from_strings",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "strings",
+          "label": null,
+          "type": "List(String)"
+        }
+      ],
+      "returnType": "StringTree  /// Joins a list of trees into a single tree. /// /// Runs in constant time. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"concat\") pub fn concat(trees: List(StringTree)) -> StringTree  /// Converts a string into a `StringTree`. /// /// Runs in constant time. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn from_string(string: String) -> StringTree  /// Turns a `StringTree` into a `String` /// /// This function is implemented natively by the virtual machine and is highly /// optimised. /// @external(erlang, \"unicode\", \"characters_to_binary\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn to_string(tree: StringTree) -> String  /// Returns the size of the `StringTree` in bytes. /// @external(erlang, \"erlang\", \"iolist_size\") @external(javascript, \"../gleam_stdlib.mjs\", \"length\") pub fn byte_size(tree: StringTree) -> Int  /// Joins the given trees into a new tree separated with the given string. /// pub fn join(trees: List(StringTree), with sep: String) -> StringTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_concat",
+      "@type": "Function",
+      "name": "concat",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "trees",
+          "label": null,
+          "type": "List(StringTree)"
+        }
+      ],
+      "returnType": "StringTree  /// Converts a string into a `StringTree`. /// /// Runs in constant time. /// @external(erlang, \"gleam_stdlib\", \"identity\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn from_string(string: String) -> StringTree  /// Turns a `StringTree` into a `String` /// /// This function is implemented natively by the virtual machine and is highly /// optimised. /// @external(erlang, \"unicode\", \"characters_to_binary\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn to_string(tree: StringTree) -> String  /// Returns the size of the `StringTree` in bytes. /// @external(erlang, \"erlang\", \"iolist_size\") @external(javascript, \"../gleam_stdlib.mjs\", \"length\") pub fn byte_size(tree: StringTree) -> Int  /// Joins the given trees into a new tree separated with the given string. /// pub fn join(trees: List(StringTree), with sep: String) -> StringTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_from_string",
+      "@type": "Function",
+      "name": "from_string",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "StringTree  /// Turns a `StringTree` into a `String` /// /// This function is implemented natively by the virtual machine and is highly /// optimised. /// @external(erlang, \"unicode\", \"characters_to_binary\") @external(javascript, \"../gleam_stdlib.mjs\", \"identity\") pub fn to_string(tree: StringTree) -> String  /// Returns the size of the `StringTree` in bytes. /// @external(erlang, \"erlang\", \"iolist_size\") @external(javascript, \"../gleam_stdlib.mjs\", \"length\") pub fn byte_size(tree: StringTree) -> Int  /// Joins the given trees into a new tree separated with the given string. /// pub fn join(trees: List(StringTree), with sep: String) -> StringTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_to_string",
+      "@type": "Function",
+      "name": "to_string",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": null,
+          "type": "StringTree"
+        }
+      ],
+      "returnType": "String  /// Returns the size of the `StringTree` in bytes. /// @external(erlang, \"erlang\", \"iolist_size\") @external(javascript, \"../gleam_stdlib.mjs\", \"length\") pub fn byte_size(tree: StringTree) -> Int  /// Joins the given trees into a new tree separated with the given string. /// pub fn join(trees: List(StringTree), with sep: String) -> StringTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_byte_size",
+      "@type": "Function",
+      "name": "byte_size",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": null,
+          "type": "StringTree"
+        }
+      ],
+      "returnType": "Int  /// Joins the given trees into a new tree separated with the given string. /// pub fn join(trees: List(StringTree), with sep: String) -> StringTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_join",
+      "@type": "Function",
+      "name": "join",
+      "module": "gleam.string_tree",
+      "purpose": "Joins the given trees into a new tree separated with the given string.",
+      "parameters": [
+        {
+          "name": "trees",
+          "label": null,
+          "type": "List(StringTree)"
+        },
+        {
+          "name": "sep",
+          "label": "with",
+          "type": "String"
+        }
+      ],
+      "returnType": "StringTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_lowercase",
+      "@type": "Function",
+      "name": "lowercase",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": null,
+          "type": "StringTree"
+        }
+      ],
+      "returnType": "StringTree  /// Converts a `StringTree` to a new one where the contents have been /// uppercased. /// @external(erlang, \"string\", \"uppercase\") @external(javascript, \"../gleam_stdlib.mjs\", \"uppercase\") pub fn uppercase(tree: StringTree) -> StringTree  /// Converts a `StringTree` to a new one with the contents reversed. /// @external(erlang, \"string\", \"reverse\") pub fn reverse(tree: StringTree) -> StringTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_uppercase",
+      "@type": "Function",
+      "name": "uppercase",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": null,
+          "type": "StringTree"
+        }
+      ],
+      "returnType": "StringTree  /// Converts a `StringTree` to a new one with the contents reversed. /// @external(erlang, \"string\", \"reverse\") pub fn reverse(tree: StringTree) -> StringTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_reverse",
+      "@type": "Function",
+      "name": "reverse",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": null,
+          "type": "StringTree"
+        }
+      ],
+      "returnType": "StringTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_split",
+      "@type": "Function",
+      "name": "split",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": null,
+          "type": "StringTree"
+        },
+        {
+          "name": "pattern",
+          "label": "on",
+          "type": "String"
+        }
+      ],
+      "returnType": "List(StringTree)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_replace",
+      "@type": "Function",
+      "name": "replace",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": "in",
+          "type": "StringTree"
+        },
+        {
+          "name": "pattern",
+          "label": "each",
+          "type": "String"
+        },
+        {
+          "name": "substitute",
+          "label": "with",
+          "type": "String"
+        }
+      ],
+      "returnType": "StringTree  /// Compares two string trees to determine if they have the same textual /// content. /// /// Comparing two string trees using the `==` operator may return `False` even /// if they have the same content as they may have been build in different ways, /// so using this function is often preferred. /// /// ## Examples /// /// ```gleam /// from_strings([\"a\", \"b\"]) == from_string(\"ab\") /// // -> False /// ``` /// /// ```gleam /// is_equal(from_strings([\"a\", \"b\"]), from_string(\"ab\")) /// // -> True /// ``` /// @external(erlang, \"string\", \"equal\") pub fn is_equal(a: StringTree, b: StringTree) -> Bool",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_is_equal",
+      "@type": "Function",
+      "name": "is_equal",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "StringTree"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "StringTree"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_tree_is_empty",
+      "@type": "Function",
+      "name": "is_empty",
+      "module": "gleam.string_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": null,
+          "type": "StringTree"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "",
+      "examples": []
+    }
+  ]
+}

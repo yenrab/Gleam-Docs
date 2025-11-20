@@ -1,0 +1,163 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_pair_module",
+      "@type": "Module",
+      "name": "gleam.pair",
+      "description": "",
+      "functions": [
+        {
+          "@id": "ex:gleam_pair_first"
+        },
+        {
+          "@id": "ex:gleam_pair_second"
+        },
+        {
+          "@id": "ex:gleam_pair_swap"
+        },
+        {
+          "@id": "ex:gleam_pair_map_first"
+        },
+        {
+          "@id": "ex:gleam_pair_map_second"
+        },
+        {
+          "@id": "ex:gleam_pair_new"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_pair_first",
+      "@type": "Function",
+      "name": "first",
+      "module": "gleam.pair",
+      "purpose": "Returns the first element in a pair.",
+      "parameters": [
+        {
+          "name": "pair",
+          "label": null,
+          "type": "#(a, b)"
+        }
+      ],
+      "returnType": "a",
+      "whyHelpful": "first(#(1, 2))",
+      "examples": [
+        "first(#(1, 2))"
+      ]
+    },
+    {
+      "@id": "ex:gleam_pair_second",
+      "@type": "Function",
+      "name": "second",
+      "module": "gleam.pair",
+      "purpose": "Returns the second element in a pair.",
+      "parameters": [
+        {
+          "name": "pair",
+          "label": null,
+          "type": "#(a, b)"
+        }
+      ],
+      "returnType": "b",
+      "whyHelpful": "second(#(1, 2))",
+      "examples": [
+        "second(#(1, 2))"
+      ]
+    },
+    {
+      "@id": "ex:gleam_pair_swap",
+      "@type": "Function",
+      "name": "swap",
+      "module": "gleam.pair",
+      "purpose": "Returns a new pair with the elements swapped.",
+      "parameters": [
+        {
+          "name": "pair",
+          "label": null,
+          "type": "#(a, b)"
+        }
+      ],
+      "returnType": "#(b, a)",
+      "whyHelpful": "swap(#(1, 2))",
+      "examples": [
+        "swap(#(1, 2))"
+      ]
+    },
+    {
+      "@id": "ex:gleam_pair_map_first",
+      "@type": "Function",
+      "name": "map_first",
+      "module": "gleam.pair",
+      "purpose": "Returns a new pair with the first element having had `with` applied to",
+      "parameters": [
+        {
+          "name": "pair",
+          "label": "of",
+          "type": "#(a, b)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(a) -> c"
+        }
+      ],
+      "returnType": "#(c, b)",
+      "whyHelpful": "#(1, 2) |> map_first(fn(n) { n * 2 })",
+      "examples": [
+        "#(1, 2) |> map_first(fn(n) { n * 2 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_pair_map_second",
+      "@type": "Function",
+      "name": "map_second",
+      "module": "gleam.pair",
+      "purpose": "Returns a new pair with the second element having had `with` applied to",
+      "parameters": [
+        {
+          "name": "pair",
+          "label": "of",
+          "type": "#(a, b)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(b) -> c"
+        }
+      ],
+      "returnType": "#(a, c)",
+      "whyHelpful": "#(1, 2) |> map_second(fn(n) { n * 2 })",
+      "examples": [
+        "#(1, 2) |> map_second(fn(n) { n * 2 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_pair_new",
+      "@type": "Function",
+      "name": "new",
+      "module": "gleam.pair",
+      "purpose": "Returns a new pair with the given elements. This can also be done using the dedicated",
+      "parameters": [
+        {
+          "name": "first",
+          "label": null,
+          "type": "a"
+        },
+        {
+          "name": "second",
+          "label": null,
+          "type": "b"
+        }
+      ],
+      "returnType": "#(a, b)",
+      "whyHelpful": "syntax instead: `new(1, 2) == #(1, 2)`.",
+      "examples": [
+        "new(1, 2)"
+      ]
+    }
+  ]
+}

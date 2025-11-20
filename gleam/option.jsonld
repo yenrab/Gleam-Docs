@@ -1,0 +1,351 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_option_module",
+      "@type": "Module",
+      "name": "gleam.option",
+      "description": "",
+      "functions": [
+        {
+          "@id": "ex:gleam_option_all"
+        },
+        {
+          "@id": "ex:gleam_option_is_some"
+        },
+        {
+          "@id": "ex:gleam_option_is_none"
+        },
+        {
+          "@id": "ex:gleam_option_to_result"
+        },
+        {
+          "@id": "ex:gleam_option_from_result"
+        },
+        {
+          "@id": "ex:gleam_option_unwrap"
+        },
+        {
+          "@id": "ex:gleam_option_lazy_unwrap"
+        },
+        {
+          "@id": "ex:gleam_option_map"
+        },
+        {
+          "@id": "ex:gleam_option_flatten"
+        },
+        {
+          "@id": "ex:gleam_option_then"
+        },
+        {
+          "@id": "ex:gleam_option_or"
+        },
+        {
+          "@id": "ex:gleam_option_lazy_or"
+        },
+        {
+          "@id": "ex:gleam_option_values"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_all",
+      "@type": "Function",
+      "name": "all",
+      "module": "gleam.option",
+      "purpose": "Combines a list of `Option`s into a single `Option`.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(Option(a))"
+        }
+      ],
+      "returnType": "Option(List(a))",
+      "whyHelpful": "If all elements in the list are `Some` then returns a `Some` holding the list of values.",
+      "examples": [
+        "all([Some(1), Some(2)])",
+        "all([Some(1), None])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_is_some",
+      "@type": "Function",
+      "name": "is_some",
+      "module": "gleam.option",
+      "purpose": "Checks whether the `Option` is a `Some` value.",
+      "parameters": [
+        {
+          "name": "option",
+          "label": null,
+          "type": "Option(a)"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "is_some(Some(1))",
+      "examples": [
+        "is_some(Some(1))",
+        "is_some(None)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_is_none",
+      "@type": "Function",
+      "name": "is_none",
+      "module": "gleam.option",
+      "purpose": "Checks whether the `Option` is a `None` value.",
+      "parameters": [
+        {
+          "name": "option",
+          "label": null,
+          "type": "Option(a)"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "is_none(Some(1))",
+      "examples": [
+        "is_none(Some(1))",
+        "is_none(None)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_to_result",
+      "@type": "Function",
+      "name": "to_result",
+      "module": "gleam.option",
+      "purpose": "Converts an `Option` type to a `Result` type.",
+      "parameters": [
+        {
+          "name": "option",
+          "label": null,
+          "type": "Option(a)"
+        }
+      ],
+      "returnType": "Result(a, e)",
+      "whyHelpful": "to_result(Some(1), \"some_error\")",
+      "examples": [
+        "to_result(Some(1), \"some_error\")",
+        "to_result(None, \"some_error\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_from_result",
+      "@type": "Function",
+      "name": "from_result",
+      "module": "gleam.option",
+      "purpose": "Converts a `Result` type to an `Option` type.",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(a, e)"
+        }
+      ],
+      "returnType": "Option(a)",
+      "whyHelpful": "from_result(Ok(1))",
+      "examples": [
+        "from_result(Ok(1))",
+        "from_result(Error(\"some_error\"))"
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_unwrap",
+      "@type": "Function",
+      "name": "unwrap",
+      "module": "gleam.option",
+      "purpose": "Extracts the value from an `Option`, returning a default value if there is none.",
+      "parameters": [
+        {
+          "name": "option",
+          "label": null,
+          "type": "Option(a)"
+        },
+        {
+          "name": "default",
+          "label": "or",
+          "type": "a"
+        }
+      ],
+      "returnType": "a",
+      "whyHelpful": "unwrap(Some(1), 0)",
+      "examples": [
+        "unwrap(Some(1), 0)",
+        "unwrap(None, 0)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_lazy_unwrap",
+      "@type": "Function",
+      "name": "lazy_unwrap",
+      "module": "gleam.option",
+      "purpose": "Extracts the value from an `Option`, evaluating the default function if the option is `None`.",
+      "parameters": [
+        {
+          "name": "option",
+          "label": null,
+          "type": "Option(a)"
+        },
+        {
+          "name": "default",
+          "label": "or",
+          "type": "fn() -> a"
+        }
+      ],
+      "returnType": "a",
+      "whyHelpful": "lazy_unwrap(Some(1), fn() { 0 })",
+      "examples": [
+        "lazy_unwrap(Some(1), fn() { 0 })",
+        "lazy_unwrap(None, fn() { 0 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_map",
+      "@type": "Function",
+      "name": "map",
+      "module": "gleam.option",
+      "purpose": "Updates a value held within the `Some` of an `Option` by calling a given function",
+      "parameters": [
+        {
+          "name": "option",
+          "label": "over",
+          "type": "Option(a)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(a) -> b"
+        }
+      ],
+      "returnType": "Option(b)",
+      "whyHelpful": "If the `Option` is a `None` rather than `Some`, the function is not called and the",
+      "examples": [
+        "map(over: Some(1), with: fn(x) { x + 1 })",
+        "map(over: None, with: fn(x) { x + 1 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_flatten",
+      "@type": "Function",
+      "name": "flatten",
+      "module": "gleam.option",
+      "purpose": "Merges a nested `Option` into a single layer.",
+      "parameters": [
+        {
+          "name": "option",
+          "label": null,
+          "type": "Option(Option(a))"
+        }
+      ],
+      "returnType": "Option(a)",
+      "whyHelpful": "flatten(Some(Some(1)))",
+      "examples": [
+        "flatten(Some(Some(1)))",
+        "flatten(Some(None))",
+        "flatten(None)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_then",
+      "@type": "Function",
+      "name": "then",
+      "module": "gleam.option",
+      "purpose": "Updates a value held within the `Some` of an `Option` by calling a given function",
+      "parameters": [
+        {
+          "name": "option",
+          "label": null,
+          "type": "Option(a)"
+        },
+        {
+          "name": "fun",
+          "label": "apply",
+          "type": "fn(a) -> Option(b)"
+        }
+      ],
+      "returnType": "Option(b)",
+      "whyHelpful": "on it, where the given function also returns an `Option`. The two options are",
+      "examples": [
+        "then(Some(1), fn(x) { Some(x + 1) })",
+        "then(Some(1), fn(x) { Some(#(\"a\", x)) })",
+        "then(Some(1), fn(_) { None })",
+        "then(None, fn(x) { Some(x + 1) })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_or",
+      "@type": "Function",
+      "name": "or",
+      "module": "gleam.option",
+      "purpose": "Returns the first value if it is `Some`, otherwise returns the second value.",
+      "parameters": [
+        {
+          "name": "first",
+          "label": null,
+          "type": "Option(a)"
+        },
+        {
+          "name": "second",
+          "label": null,
+          "type": "Option(a)"
+        }
+      ],
+      "returnType": "Option(a)",
+      "whyHelpful": "or(Some(1), Some(2))",
+      "examples": [
+        "or(Some(1), Some(2))",
+        "or(Some(1), None)",
+        "or(None, Some(2))",
+        "or(None, None)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_lazy_or",
+      "@type": "Function",
+      "name": "lazy_or",
+      "module": "gleam.option",
+      "purpose": "Returns the first value if it is `Some`, otherwise evaluates the given function for a fallback value.",
+      "parameters": [
+        {
+          "name": "first",
+          "label": null,
+          "type": "Option(a)"
+        },
+        {
+          "name": "second",
+          "label": null,
+          "type": "fn() -> Option(a)"
+        }
+      ],
+      "returnType": "Option(a)",
+      "whyHelpful": "lazy_or(Some(1), fn() { Some(2) })",
+      "examples": [
+        "lazy_or(Some(1), fn() { Some(2) })",
+        "lazy_or(Some(1), fn() { None })",
+        "lazy_or(None, fn() { Some(2) })",
+        "lazy_or(None, fn() { None })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_option_values",
+      "@type": "Function",
+      "name": "values",
+      "module": "gleam.option",
+      "purpose": "Given a list of `Option`s,",
+      "parameters": [
+        {
+          "name": "options",
+          "label": null,
+          "type": "List(Option(a))"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "returns only the values inside `Some`.",
+      "examples": [
+        "values([Some(1), None, Some(3)])"
+      ]
+    }
+  ]
+}

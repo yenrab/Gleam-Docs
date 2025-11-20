@@ -1,0 +1,169 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_order_module",
+      "@type": "Module",
+      "name": "gleam.order",
+      "description": "",
+      "functions": [
+        {
+          "@id": "ex:gleam_order_negate"
+        },
+        {
+          "@id": "ex:gleam_order_to_int"
+        },
+        {
+          "@id": "ex:gleam_order_compare"
+        },
+        {
+          "@id": "ex:gleam_order_reverse"
+        },
+        {
+          "@id": "ex:gleam_order_break_tie"
+        },
+        {
+          "@id": "ex:gleam_order_lazy_break_tie"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_order_negate",
+      "@type": "Function",
+      "name": "negate",
+      "module": "gleam.order",
+      "purpose": "Inverts an order, so less-than becomes greater-than and greater-than",
+      "parameters": [
+        {
+          "name": "order",
+          "label": null,
+          "type": "Order"
+        }
+      ],
+      "returnType": "Order",
+      "whyHelpful": "becomes less-than.",
+      "examples": [
+        "negate(Lt)",
+        "negate(Eq)",
+        "negate(Gt)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_order_to_int",
+      "@type": "Function",
+      "name": "to_int",
+      "module": "gleam.order",
+      "purpose": "Produces a numeric representation of the order.",
+      "parameters": [
+        {
+          "name": "order",
+          "label": null,
+          "type": "Order"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "",
+      "examples": [
+        "to_int(Lt)",
+        "to_int(Eq)",
+        "to_int(Gt)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_order_compare",
+      "@type": "Function",
+      "name": "compare",
+      "module": "gleam.order",
+      "purpose": "Compares two `Order` values to one another, producing a new `Order`.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Order"
+        },
+        {
+          "name": "b",
+          "label": "with",
+          "type": "Order"
+        }
+      ],
+      "returnType": "Order",
+      "whyHelpful": "compare(Eq, with: Lt)",
+      "examples": [
+        "compare(Eq, with: Lt)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_order_reverse",
+      "@type": "Function",
+      "name": "reverse",
+      "module": "gleam.order",
+      "purpose": "Inverts an ordering function, so less-than becomes greater-than and greater-than",
+      "parameters": [
+        {
+          "name": "orderer",
+          "label": null,
+          "type": "fn(a, a) -> Order"
+        }
+      ],
+      "returnType": "fn(a, a) -> Order",
+      "whyHelpful": "becomes less-than.",
+      "examples": [
+        "list.sort([1, 5, 4], by: reverse(int.compare))"
+      ]
+    },
+    {
+      "@id": "ex:gleam_order_break_tie",
+      "@type": "Function",
+      "name": "break_tie",
+      "module": "gleam.order",
+      "purpose": "Return a fallback `Order` in case the first argument is `Eq`.",
+      "parameters": [
+        {
+          "name": "order",
+          "label": "in",
+          "type": "Order"
+        },
+        {
+          "name": "other",
+          "label": "with",
+          "type": "Order"
+        }
+      ],
+      "returnType": "Order",
+      "whyHelpful": "import gleam/int",
+      "examples": [
+        "break_tie(in: int.compare(1, 1), with: Lt)",
+        "break_tie(in: int.compare(1, 0), with: Eq)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_order_lazy_break_tie",
+      "@type": "Function",
+      "name": "lazy_break_tie",
+      "module": "gleam.order",
+      "purpose": "Invokes a fallback function returning an `Order` in case the first argument",
+      "parameters": [
+        {
+          "name": "order",
+          "label": "in",
+          "type": "Order"
+        },
+        {
+          "name": "comparison",
+          "label": "with",
+          "type": "fn() -> Order"
+        }
+      ],
+      "returnType": "Order",
+      "whyHelpful": "This can be useful when the fallback comparison might be expensive and it",
+      "examples": [
+        "lazy_break_tie(in: int.compare(1, 1), with: fn() { Lt })",
+        "lazy_break_tie(in: int.compare(1, 0), with: fn() { Eq })"
+      ]
+    }
+  ]
+}

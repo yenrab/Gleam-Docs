@@ -1,0 +1,513 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_result_module",
+      "@type": "Module",
+      "name": "gleam.result",
+      "description": "Result represents the result of something that may succeed or not.\n//// `Ok` means it was successful, `Error` means it was not successful.",
+      "functions": [
+        {
+          "@id": "ex:gleam_result_is_ok"
+        },
+        {
+          "@id": "ex:gleam_result_is_error"
+        },
+        {
+          "@id": "ex:gleam_result_map"
+        },
+        {
+          "@id": "ex:gleam_result_map_error"
+        },
+        {
+          "@id": "ex:gleam_result_flatten"
+        },
+        {
+          "@id": "ex:gleam_result_try"
+        },
+        {
+          "@id": "ex:gleam_result_then"
+        },
+        {
+          "@id": "ex:gleam_result_unwrap"
+        },
+        {
+          "@id": "ex:gleam_result_lazy_unwrap"
+        },
+        {
+          "@id": "ex:gleam_result_unwrap_error"
+        },
+        {
+          "@id": "ex:gleam_result_unwrap_both"
+        },
+        {
+          "@id": "ex:gleam_result_or"
+        },
+        {
+          "@id": "ex:gleam_result_lazy_or"
+        },
+        {
+          "@id": "ex:gleam_result_all"
+        },
+        {
+          "@id": "ex:gleam_result_partition"
+        },
+        {
+          "@id": "ex:gleam_result_replace"
+        },
+        {
+          "@id": "ex:gleam_result_replace_error"
+        },
+        {
+          "@id": "ex:gleam_result_values"
+        },
+        {
+          "@id": "ex:gleam_result_try_recover"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_is_ok",
+      "@type": "Function",
+      "name": "is_ok",
+      "module": "gleam.result",
+      "purpose": "Checks whether the result is an `Ok` value.",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(a, e)"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "is_ok(Ok(1))",
+      "examples": [
+        "is_ok(Ok(1))",
+        "is_ok(Error(Nil))"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_is_error",
+      "@type": "Function",
+      "name": "is_error",
+      "module": "gleam.result",
+      "purpose": "Checks whether the result is an `Error` value.",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(a, e)"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "is_error(Ok(1))",
+      "examples": [
+        "is_error(Ok(1))",
+        "is_error(Error(Nil))"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_map",
+      "@type": "Function",
+      "name": "map",
+      "module": "gleam.result",
+      "purpose": "Updates a value held within the `Ok` of a result by calling a given function",
+      "parameters": [
+        {
+          "name": "result",
+          "label": "over",
+          "type": "Result(a, e)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(a) -> b"
+        }
+      ],
+      "returnType": "Result(b, e)",
+      "whyHelpful": "If the result is an `Error` rather than `Ok` the function is not called and the",
+      "examples": [
+        "map(over: Ok(1), with: fn(x) { x + 1 })",
+        "map(over: Error(1), with: fn(x) { x + 1 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_map_error",
+      "@type": "Function",
+      "name": "map_error",
+      "module": "gleam.result",
+      "purpose": "Updates a value held within the `Error` of a result by calling a given function",
+      "parameters": [
+        {
+          "name": "result",
+          "label": "over",
+          "type": "Result(a, e)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(e) -> f"
+        }
+      ],
+      "returnType": "Result(a, f)",
+      "whyHelpful": "If the result is `Ok` rather than `Error` the function is not called and the",
+      "examples": [
+        "map_error(over: Error(1), with: fn(x) { x + 1 })",
+        "map_error(over: Ok(1), with: fn(x) { x + 1 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_flatten",
+      "@type": "Function",
+      "name": "flatten",
+      "module": "gleam.result",
+      "purpose": "Merges a nested `Result` into a single layer.",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(Result(a, e), e)"
+        }
+      ],
+      "returnType": "Result(a, e)",
+      "whyHelpful": "flatten(Ok(Ok(1)))",
+      "examples": [
+        "flatten(Ok(Ok(1)))",
+        "flatten(Ok(Error(\"\")))",
+        "flatten(Error(Nil))"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_try",
+      "@type": "Function",
+      "name": "try",
+      "module": "gleam.result",
+      "purpose": "\"Updates\" an `Ok` result by passing its value to a function that yields a result,",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(a, e)"
+        },
+        {
+          "name": "fun",
+          "label": "apply",
+          "type": "fn(a) -> Result(b, e)"
+        }
+      ],
+      "returnType": "Result(b, e)",
+      "whyHelpful": "This may \"replace\" the `Ok` with an `Error`.) If the input is an `Error` rather than an `Ok`, the function is not called and the original `Error` is returned.",
+      "examples": [
+        "try(Ok(1), fn(x) { Ok(x + 1) })",
+        "try(Ok(1), fn(x) { Ok(#(\"a\", x)) })",
+        "try(Ok(1), fn(_) { Error(\"Oh no\") })",
+        "try(Error(Nil), fn(x) { Ok(x + 1) })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_then",
+      "@type": "Function",
+      "name": "then",
+      "module": "gleam.result",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(a, e)"
+        },
+        {
+          "name": "fun",
+          "label": "apply",
+          "type": "fn(a) -> Result(b, e)"
+        }
+      ],
+      "returnType": "Result(b, e)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_result_unwrap",
+      "@type": "Function",
+      "name": "unwrap",
+      "module": "gleam.result",
+      "purpose": "Extracts the `Ok` value from a result, returning a default value if the result",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(a, e)"
+        },
+        {
+          "name": "default",
+          "label": "or",
+          "type": "a"
+        }
+      ],
+      "returnType": "a",
+      "whyHelpful": "is an `Error`.",
+      "examples": [
+        "unwrap(Ok(1), 0)",
+        "unwrap(Error(\"\"), 0)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_lazy_unwrap",
+      "@type": "Function",
+      "name": "lazy_unwrap",
+      "module": "gleam.result",
+      "purpose": "Extracts the `Ok` value from a result, evaluating the default function if the result",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(a, e)"
+        },
+        {
+          "name": "default",
+          "label": "or",
+          "type": "fn() -> a"
+        }
+      ],
+      "returnType": "a",
+      "whyHelpful": "is an `Error`.",
+      "examples": [
+        "lazy_unwrap(Ok(1), fn() { 0 })",
+        "lazy_unwrap(Error(\"\"), fn() { 0 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_unwrap_error",
+      "@type": "Function",
+      "name": "unwrap_error",
+      "module": "gleam.result",
+      "purpose": "Extracts the `Error` value from a result, returning a default value if the result",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(a, e)"
+        },
+        {
+          "name": "default",
+          "label": "or",
+          "type": "e"
+        }
+      ],
+      "returnType": "e",
+      "whyHelpful": "is an `Ok`.",
+      "examples": [
+        "unwrap_error(Error(1), 0)",
+        "unwrap_error(Ok(\"\"), 0)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_unwrap_both",
+      "@type": "Function",
+      "name": "unwrap_both",
+      "module": "gleam.result",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(a, a)"
+        }
+      ],
+      "returnType": "a",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_result_or",
+      "@type": "Function",
+      "name": "or",
+      "module": "gleam.result",
+      "purpose": "Returns the first value if it is `Ok`, otherwise returns the second value.",
+      "parameters": [
+        {
+          "name": "first",
+          "label": null,
+          "type": "Result(a, e)"
+        },
+        {
+          "name": "second",
+          "label": null,
+          "type": "Result(a, e)"
+        }
+      ],
+      "returnType": "Result(a, e)",
+      "whyHelpful": "or(Ok(1), Ok(2))",
+      "examples": [
+        "or(Ok(1), Ok(2))",
+        "or(Ok(1), Error(\"Error 2\"))",
+        "or(Error(\"Error 1\"), Ok(2))",
+        "or(Error(\"Error 1\"), Error(\"Error 2\"))"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_lazy_or",
+      "@type": "Function",
+      "name": "lazy_or",
+      "module": "gleam.result",
+      "purpose": "Returns the first value if it is `Ok`, otherwise evaluates the given function for a fallback value.",
+      "parameters": [
+        {
+          "name": "first",
+          "label": null,
+          "type": "Result(a, e)"
+        },
+        {
+          "name": "second",
+          "label": null,
+          "type": "fn() -> Result(a, e)"
+        }
+      ],
+      "returnType": "Result(a, e)",
+      "whyHelpful": "If you need access to the initial error value, use `result.try_recover`.",
+      "examples": [
+        "lazy_or(Ok(1), fn() { Ok(2) })",
+        "lazy_or(Ok(1), fn() { Error(\"Error 2\") })",
+        "lazy_or(Error(\"Error 1\"), fn() { Ok(2) })",
+        "lazy_or(Error(\"Error 1\"), fn() { Error(\"Error 2\") })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_all",
+      "@type": "Function",
+      "name": "all",
+      "module": "gleam.result",
+      "purpose": "Combines a list of results into a single result.",
+      "parameters": [
+        {
+          "name": "results",
+          "label": null,
+          "type": "List(Result(a, e))"
+        }
+      ],
+      "returnType": "Result(List(a), e)",
+      "whyHelpful": "If all elements in the list are `Ok` then returns an `Ok` holding the list of values.",
+      "examples": [
+        "all([Ok(1), Ok(2)])",
+        "all([Ok(1), Error(\"e\")])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_partition",
+      "@type": "Function",
+      "name": "partition",
+      "module": "gleam.result",
+      "purpose": "Given a list of results, returns a pair where the first element is a list",
+      "parameters": [
+        {
+          "name": "results",
+          "label": null,
+          "type": "List(Result(a, e))"
+        }
+      ],
+      "returnType": "#(List(a), List(e))",
+      "whyHelpful": "of all the values inside `Ok` and the second element is a list with all the",
+      "examples": [
+        "partition([Ok(1), Error(\"a\"), Error(\"b\"), Ok(2)])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_replace",
+      "@type": "Function",
+      "name": "replace",
+      "module": "gleam.result",
+      "purpose": "Replace the value within a result",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(a, e)"
+        },
+        {
+          "name": "value",
+          "label": null,
+          "type": "b"
+        }
+      ],
+      "returnType": "Result(b, e)",
+      "whyHelpful": "replace(Ok(1), Nil)",
+      "examples": [
+        "replace(Ok(1), Nil)",
+        "replace(Error(1), Nil)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_replace_error",
+      "@type": "Function",
+      "name": "replace_error",
+      "module": "gleam.result",
+      "purpose": "Replace the error within a result",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(a, e)"
+        },
+        {
+          "name": "error",
+          "label": null,
+          "type": "f"
+        }
+      ],
+      "returnType": "Result(a, f)",
+      "whyHelpful": "replace_error(Error(1), Nil)",
+      "examples": [
+        "replace_error(Error(1), Nil)",
+        "replace_error(Ok(1), Nil)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_values",
+      "@type": "Function",
+      "name": "values",
+      "module": "gleam.result",
+      "purpose": "Given a list of results, returns only the values inside `Ok`.",
+      "parameters": [
+        {
+          "name": "results",
+          "label": null,
+          "type": "List(Result(a, e))"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "values([Ok(1), Error(\"a\"), Ok(3)])",
+      "examples": [
+        "values([Ok(1), Error(\"a\"), Ok(3)])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_result_try_recover",
+      "@type": "Function",
+      "name": "try_recover",
+      "module": "gleam.result",
+      "purpose": "Updates a value held within the `Error` of a result by calling a given function",
+      "parameters": [
+        {
+          "name": "result",
+          "label": null,
+          "type": "Result(a, e)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(e) -> Result(a, f)"
+        }
+      ],
+      "returnType": "Result(a, f)",
+      "whyHelpful": "This function is useful for chaining together computations that may fail and trying to recover from possible errors. If you do not need access to the initial error value, use `result.",
+      "examples": [
+        "Ok(1) |> try_recover(with: fn(_) { Error(\"failed to recover\") })",
+        "Error(1) |> try_recover(with: fn(error) { Ok(error + 1) })",
+        "Error(1) |> try_recover(with: fn(error) { Error(\"failed to recover\") })"
+      ]
+    }
+  ]
+}

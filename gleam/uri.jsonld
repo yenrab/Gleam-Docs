@@ -1,0 +1,209 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_uri_module",
+      "@type": "Module",
+      "name": "gleam.uri",
+      "description": "Utilities for working with URIs\n////\n//// This module provides functions for working with URIs (for example, parsing\n//// URIs or encoding query strings). The functions in this module are implemented\n//// according to [RFC 3986](https://tools.ietf.org/html/rfc3986).\n////\n//// Query encoding (Form encoding) is defined in the\n//// [W3C specification](https://www.w3.org/TR/html52/sec-forms.html#urlencoded-form-data).",
+      "functions": [
+        {
+          "@id": "ex:gleam_uri_parse"
+        },
+        {
+          "@id": "ex:gleam_uri_parse_query"
+        },
+        {
+          "@id": "ex:gleam_uri_query_to_string"
+        },
+        {
+          "@id": "ex:gleam_uri_percent_encode"
+        },
+        {
+          "@id": "ex:gleam_uri_percent_decode"
+        },
+        {
+          "@id": "ex:gleam_uri_path_segments"
+        },
+        {
+          "@id": "ex:gleam_uri_to_string"
+        },
+        {
+          "@id": "ex:gleam_uri_origin"
+        },
+        {
+          "@id": "ex:gleam_uri_merge"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_uri_parse",
+      "@type": "Function",
+      "name": "parse",
+      "module": "gleam.uri",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "uri_string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Result(Uri, Nil)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_uri_parse_query",
+      "@type": "Function",
+      "name": "parse_query",
+      "module": "gleam.uri",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "query",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Result(List(#(String, String)), Nil)  /// Encodes a list of key value pairs as a URI query string. /// /// The opposite operation is `uri.parse_query`. /// /// ## Examples /// /// ```gleam /// query_to_string([#(\"a\", \"1\"), #(\"b\", \"2\")]) /// // -> \"a=1&b=2\" /// ``` /// pub fn query_to_string(query: List(#(String, String))) -> String",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_uri_query_to_string",
+      "@type": "Function",
+      "name": "query_to_string",
+      "module": "gleam.uri",
+      "purpose": "Encodes a list of key value pairs as a URI query string.",
+      "parameters": [
+        {
+          "name": "query",
+          "label": null,
+          "type": "List(#(String, String))"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "The opposite operation is `uri.parse_query`.",
+      "examples": [
+        "query_to_string([#(\"a\", \"1\"), #(\"b\", \"2\")])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_uri_percent_encode",
+      "@type": "Function",
+      "name": "percent_encode",
+      "module": "gleam.uri",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "value",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "String  /// Decodes a percent encoded string. /// /// ## Examples /// /// ```gleam /// percent_decode(\"100%25%20great+fun\") /// // -> Ok(\"100% great+fun\") /// ``` /// @external(erlang, \"gleam_stdlib\", \"percent_decode\") @external(javascript, \"../gleam_stdlib.mjs\", \"percent_decode\") pub fn percent_decode(value: String) -> Result(String, Nil)  /// Splits the path section of a URI into it's constituent segments. /// /// Removes empty segments and resolves dot-segments as specified in /// [section 5.2](https://www.ietf.org/rfc/rfc3986.html#section-5.2) of the RFC. /// /// ## Examples /// /// ```gleam /// path_segments(\"/users/1\") /// // -> [\"users\" ,\"1\"] /// ``` /// pub fn path_segments(path: String) -> List(String)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_uri_percent_decode",
+      "@type": "Function",
+      "name": "percent_decode",
+      "module": "gleam.uri",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "value",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Result(String, Nil)  /// Splits the path section of a URI into it's constituent segments. /// /// Removes empty segments and resolves dot-segments as specified in /// [section 5.2](https://www.ietf.org/rfc/rfc3986.html#section-5.2) of the RFC. /// /// ## Examples /// /// ```gleam /// path_segments(\"/users/1\") /// // -> [\"users\" ,\"1\"] /// ``` /// pub fn path_segments(path: String) -> List(String)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_uri_path_segments",
+      "@type": "Function",
+      "name": "path_segments",
+      "module": "gleam.uri",
+      "purpose": "Splits the path section of a URI into it's constituent segments.",
+      "parameters": [
+        {
+          "name": "path",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "List(String)",
+      "whyHelpful": "Removes empty segments and resolves dot-segments as specified in",
+      "examples": [
+        "path_segments(\"/users/1\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_uri_to_string",
+      "@type": "Function",
+      "name": "to_string",
+      "module": "gleam.uri",
+      "purpose": "Encodes a `Uri` value as a URI string.",
+      "parameters": [
+        {
+          "name": "uri",
+          "label": null,
+          "type": "Uri"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "The opposite operation is `uri.parse`.",
+      "examples": [
+        "to_string(uri)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_uri_origin",
+      "@type": "Function",
+      "name": "origin",
+      "module": "gleam.uri",
+      "purpose": "Fetches the origin of a URI.",
+      "parameters": [
+        {
+          "name": "uri",
+          "label": null,
+          "type": "Uri"
+        }
+      ],
+      "returnType": "Result(String, Nil)",
+      "whyHelpful": "Returns the origin of a uri as defined in",
+      "examples": [
+        "origin(uri)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_uri_merge",
+      "@type": "Function",
+      "name": "merge",
+      "module": "gleam.uri",
+      "purpose": "Resolves a URI with respect to the given base URI.",
+      "parameters": [
+        {
+          "name": "base",
+          "label": null,
+          "type": "Uri"
+        },
+        {
+          "name": "relative",
+          "label": null,
+          "type": "Uri"
+        }
+      ],
+      "returnType": "Result(Uri, Nil)",
+      "whyHelpful": "this function will return an error. The algorithm for merging uris is described in [RFC 3986](https://tools.",
+      "examples": []
+    }
+  ]
+}

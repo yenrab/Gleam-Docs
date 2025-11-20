@@ -1,0 +1,96 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_io_module",
+      "@type": "Module",
+      "name": "gleam.io",
+      "description": "",
+      "functions": [
+        {
+          "@id": "ex:gleam_io_print"
+        },
+        {
+          "@id": "ex:gleam_io_print_error"
+        },
+        {
+          "@id": "ex:gleam_io_println"
+        },
+        {
+          "@id": "ex:gleam_io_println_error"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_io_print",
+      "@type": "Function",
+      "name": "print",
+      "module": "gleam.io",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Nil  /// Writes a string to standard error (stderr). /// /// If you want your output to be printed on its own line see `println_error`. /// /// ## Example /// /// ``` /// io.print_error(\"Hi pop\") /// // -> Nil /// // Hi pop /// ``` /// @external(erlang, \"gleam_stdlib\", \"print_error\") @external(javascript, \"../gleam_stdlib.mjs\", \"print_error\") pub fn print_error(string: String) -> Nil  /// Writes a string to standard output (stdout), appending a newline to the end. /// /// ## Example /// /// ```gleam /// io.println(\"Hi mum\") /// // -> Nil /// // Hi mum /// ``` /// @external(erlang, \"gleam_stdlib\", \"println\") @external(javascript, \"../gleam_stdlib.mjs\", \"console_log\") pub fn println(string: String) -> Nil  /// Writes a string to standard error (stderr), appending a newline to the end. /// /// ## Example /// /// ```gleam /// io.println_error(\"Hi pop\") /// // -> Nil /// // Hi pop /// ``` /// @external(erlang, \"gleam_stdlib\", \"println_error\") @external(javascript, \"../gleam_stdlib.mjs\", \"console_error\") pub fn println_error(string: String) -> Nil",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_io_print_error",
+      "@type": "Function",
+      "name": "print_error",
+      "module": "gleam.io",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Nil  /// Writes a string to standard output (stdout), appending a newline to the end. /// /// ## Example /// /// ```gleam /// io.println(\"Hi mum\") /// // -> Nil /// // Hi mum /// ``` /// @external(erlang, \"gleam_stdlib\", \"println\") @external(javascript, \"../gleam_stdlib.mjs\", \"console_log\") pub fn println(string: String) -> Nil  /// Writes a string to standard error (stderr), appending a newline to the end. /// /// ## Example /// /// ```gleam /// io.println_error(\"Hi pop\") /// // -> Nil /// // Hi pop /// ``` /// @external(erlang, \"gleam_stdlib\", \"println_error\") @external(javascript, \"../gleam_stdlib.mjs\", \"console_error\") pub fn println_error(string: String) -> Nil",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_io_println",
+      "@type": "Function",
+      "name": "println",
+      "module": "gleam.io",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Nil  /// Writes a string to standard error (stderr), appending a newline to the end. /// /// ## Example /// /// ```gleam /// io.println_error(\"Hi pop\") /// // -> Nil /// // Hi pop /// ``` /// @external(erlang, \"gleam_stdlib\", \"println_error\") @external(javascript, \"../gleam_stdlib.mjs\", \"console_error\") pub fn println_error(string: String) -> Nil",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_io_println_error",
+      "@type": "Function",
+      "name": "println_error",
+      "module": "gleam.io",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Nil",
+      "whyHelpful": "",
+      "examples": []
+    }
+  ]
+}

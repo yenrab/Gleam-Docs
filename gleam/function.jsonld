@@ -1,0 +1,61 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_function_module",
+      "@type": "Module",
+      "name": "gleam.function",
+      "description": "",
+      "functions": [
+        {
+          "@id": "ex:gleam_function_identity"
+        },
+        {
+          "@id": "ex:gleam_function_tap"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_function_identity",
+      "@type": "Function",
+      "name": "identity",
+      "module": "gleam.function",
+      "purpose": "Takes a single argument and always returns its input value.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "a"
+        }
+      ],
+      "returnType": "a",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_function_tap",
+      "@type": "Function",
+      "name": "tap",
+      "module": "gleam.function",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "arg",
+          "label": null,
+          "type": "a"
+        },
+        {
+          "name": "effect",
+          "label": null,
+          "type": "fn(a) -> b"
+        }
+      ],
+      "returnType": "a",
+      "whyHelpful": "",
+      "examples": []
+    }
+  ]
+}

@@ -1,0 +1,532 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_set_module",
+      "@type": "Module",
+      "name": "gleam.set",
+      "description": "",
+      "functions": [
+        {
+          "@id": "ex:gleam_set_new"
+        },
+        {
+          "@id": "ex:gleam_set_size"
+        },
+        {
+          "@id": "ex:gleam_set_is_empty"
+        },
+        {
+          "@id": "ex:gleam_set_insert"
+        },
+        {
+          "@id": "ex:gleam_set_contains"
+        },
+        {
+          "@id": "ex:gleam_set_delete"
+        },
+        {
+          "@id": "ex:gleam_set_to_list"
+        },
+        {
+          "@id": "ex:gleam_set_from_list"
+        },
+        {
+          "@id": "ex:gleam_set_fold"
+        },
+        {
+          "@id": "ex:gleam_set_filter"
+        },
+        {
+          "@id": "ex:gleam_set_map"
+        },
+        {
+          "@id": "ex:gleam_set_drop"
+        },
+        {
+          "@id": "ex:gleam_set_take"
+        },
+        {
+          "@id": "ex:gleam_set_union"
+        },
+        {
+          "@id": "ex:gleam_set_intersection"
+        },
+        {
+          "@id": "ex:gleam_set_difference"
+        },
+        {
+          "@id": "ex:gleam_set_is_subset"
+        },
+        {
+          "@id": "ex:gleam_set_is_disjoint"
+        },
+        {
+          "@id": "ex:gleam_set_symmetric_difference"
+        },
+        {
+          "@id": "ex:gleam_set_each"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_new",
+      "@type": "Function",
+      "name": "new",
+      "module": "gleam.set",
+      "purpose": "Creates a new empty set.",
+      "parameters": [],
+      "returnType": "Set(member)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_set_size",
+      "@type": "Function",
+      "name": "size",
+      "module": "gleam.set",
+      "purpose": "Gets the number of members in a set.",
+      "parameters": [
+        {
+          "name": "set",
+          "label": null,
+          "type": "Set(member)"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "This function runs in constant time.",
+      "examples": [
+        "size"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_is_empty",
+      "@type": "Function",
+      "name": "is_empty",
+      "module": "gleam.set",
+      "purpose": "Determines whether or not the set is empty.",
+      "parameters": [
+        {
+          "name": "set",
+          "label": null,
+          "type": "Set(member)"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "new() |> is_empty",
+      "examples": [
+        "new() |> is_empty",
+        "new() |> insert(1) |> is_empty"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_insert",
+      "@type": "Function",
+      "name": "insert",
+      "module": "gleam.set",
+      "purpose": "Inserts an member into the set.",
+      "parameters": [
+        {
+          "name": "set",
+          "label": "into",
+          "type": "Set(member)"
+        },
+        {
+          "name": "member",
+          "label": "this",
+          "type": "member"
+        }
+      ],
+      "returnType": "Set(member)",
+      "whyHelpful": "This function runs in logarithmic time.",
+      "examples": [
+        "size"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_contains",
+      "@type": "Function",
+      "name": "contains",
+      "module": "gleam.set",
+      "purpose": "Checks whether a set contains a given member.",
+      "parameters": [
+        {
+          "name": "set",
+          "label": "in",
+          "type": "Set(member)"
+        },
+        {
+          "name": "member",
+          "label": "this",
+          "type": "member"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "This function runs in logarithmic time.",
+      "examples": [
+        "contains(2)",
+        "contains(1)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_delete",
+      "@type": "Function",
+      "name": "delete",
+      "module": "gleam.set",
+      "purpose": "Removes a member from a set. If the set does not contain the member then",
+      "parameters": [
+        {
+          "name": "set",
+          "label": "from",
+          "type": "Set(member)"
+        },
+        {
+          "name": "member",
+          "label": "this",
+          "type": "member"
+        }
+      ],
+      "returnType": "Set(member)",
+      "whyHelpful": "the set is returned unchanged.",
+      "examples": [
+        "contains(1)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_to_list",
+      "@type": "Function",
+      "name": "to_list",
+      "module": "gleam.set",
+      "purpose": "Converts the set into a list of the contained members.",
+      "parameters": [
+        {
+          "name": "set",
+          "label": null,
+          "type": "Set(member)"
+        }
+      ],
+      "returnType": "List(member)",
+      "whyHelpful": "The list has no specific ordering, any unintentional ordering may change in",
+      "examples": [
+        "new() |> insert(2) |> to_list"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_from_list",
+      "@type": "Function",
+      "name": "from_list",
+      "module": "gleam.set",
+      "purpose": "Creates a new set of the members in a given list.",
+      "parameters": [
+        {
+          "name": "members",
+          "label": null,
+          "type": "List(member)"
+        }
+      ],
+      "returnType": "Set(member)",
+      "whyHelpful": "This function runs in loglinear time.",
+      "examples": [
+        "[1, 1, 2, 4, 3, 2] |> from_list |> to_list |> list.sort(by: int.compare)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_fold",
+      "@type": "Function",
+      "name": "fold",
+      "module": "gleam.set",
+      "purpose": "Combines all entries into a single value by calling a given function on each",
+      "parameters": [
+        {
+          "name": "set",
+          "label": "over",
+          "type": "Set(member)"
+        },
+        {
+          "name": "initial",
+          "label": "from",
+          "type": "acc"
+        },
+        {
+          "name": "reducer",
+          "label": "with",
+          "type": "fn(acc, member) -> acc"
+        }
+      ],
+      "returnType": "acc",
+      "whyHelpful": "Sets are not ordered so the values are not returned in any specific order.",
+      "examples": [
+        "fold(0, fn(accumulator, member) { accumulator + member })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_filter",
+      "@type": "Function",
+      "name": "filter",
+      "module": "gleam.set",
+      "purpose": "Creates a new set from an existing set, minus any members that a given",
+      "parameters": [
+        {
+          "name": "set",
+          "label": "in",
+          "type": "Set(member)"
+        },
+        {
+          "name": "predicate",
+          "label": "keeping",
+          "type": "fn(member) -> Bool"
+        }
+      ],
+      "returnType": "Set(member)",
+      "whyHelpful": "function returns `False` for.",
+      "examples": [
+        "to_list"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_map",
+      "@type": "Function",
+      "name": "map",
+      "module": "gleam.set",
+      "purpose": "Creates a new set from a given set with the result of applying the given",
+      "parameters": [
+        {
+          "name": "set",
+          "label": null,
+          "type": "Set(member)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(member) -> mapped"
+        }
+      ],
+      "returnType": "Set(mapped)",
+      "whyHelpful": "function to each member.",
+      "examples": [
+        "to_list"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_drop",
+      "@type": "Function",
+      "name": "drop",
+      "module": "gleam.set",
+      "purpose": "Creates a new set from a given set with all the same entries except any",
+      "parameters": [
+        {
+          "name": "set",
+          "label": "from",
+          "type": "Set(member)"
+        },
+        {
+          "name": "disallowed",
+          "label": "drop",
+          "type": "List(member)"
+        }
+      ],
+      "returnType": "Set(member)",
+      "whyHelpful": "entry found on the given list.",
+      "examples": [
+        "to_list"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_take",
+      "@type": "Function",
+      "name": "take",
+      "module": "gleam.set",
+      "purpose": "Creates a new set from a given set, only including any members which are in",
+      "parameters": [
+        {
+          "name": "set",
+          "label": "from",
+          "type": "Set(member)"
+        },
+        {
+          "name": "desired",
+          "label": "keeping",
+          "type": "List(member)"
+        }
+      ],
+      "returnType": "Set(member)",
+      "whyHelpful": "a given list.",
+      "examples": [
+        "to_list"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_union",
+      "@type": "Function",
+      "name": "union",
+      "module": "gleam.set",
+      "purpose": "Creates a new set that contains all members of both given sets.",
+      "parameters": [
+        {
+          "name": "first",
+          "label": "of",
+          "type": "Set(member)"
+        },
+        {
+          "name": "second",
+          "label": "and",
+          "type": "Set(member)"
+        }
+      ],
+      "returnType": "Set(member)",
+      "whyHelpful": "This function runs in loglinear time.",
+      "examples": [
+        "union(from_list([1, 2]), from_list([2, 3])) |> to_list"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_intersection",
+      "@type": "Function",
+      "name": "intersection",
+      "module": "gleam.set",
+      "purpose": "Creates a new set that contains members that are present in both given sets.",
+      "parameters": [
+        {
+          "name": "first",
+          "label": "of",
+          "type": "Set(member)"
+        },
+        {
+          "name": "second",
+          "label": "and",
+          "type": "Set(member)"
+        }
+      ],
+      "returnType": "Set(member)",
+      "whyHelpful": "This function runs in loglinear time.",
+      "examples": [
+        "intersection(from_list([1, 2]), from_list([2, 3])) |> to_list"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_difference",
+      "@type": "Function",
+      "name": "difference",
+      "module": "gleam.set",
+      "purpose": "Creates a new set that contains members that are present in the first set",
+      "parameters": [
+        {
+          "name": "first",
+          "label": "from",
+          "type": "Set(member)"
+        },
+        {
+          "name": "second",
+          "label": "minus",
+          "type": "Set(member)"
+        }
+      ],
+      "returnType": "Set(member)",
+      "whyHelpful": "but not the second.",
+      "examples": [
+        "difference(from_list([1, 2]), from_list([2, 3, 4])) |> to_list"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_is_subset",
+      "@type": "Function",
+      "name": "is_subset",
+      "module": "gleam.set",
+      "purpose": "Determines if a set is fully contained by another.",
+      "parameters": [
+        {
+          "name": "first",
+          "label": null,
+          "type": "Set(member)"
+        },
+        {
+          "name": "second",
+          "label": "of",
+          "type": "Set(member)"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "is_subset(from_list([1]), from_list([1, 2]))",
+      "examples": [
+        "is_subset(from_list([1]), from_list([1, 2]))",
+        "is_subset(from_list([1, 2, 3]), from_list([3, 4, 5]))"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_is_disjoint",
+      "@type": "Function",
+      "name": "is_disjoint",
+      "module": "gleam.set",
+      "purpose": "Determines if two sets contain no common members",
+      "parameters": [
+        {
+          "name": "first",
+          "label": null,
+          "type": "Set(member)"
+        },
+        {
+          "name": "second",
+          "label": "from",
+          "type": "Set(member)"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "is_disjoint(from_list([1, 2, 3]), from_list([4, 5, 6]))",
+      "examples": [
+        "is_disjoint(from_list([1, 2, 3]), from_list([4, 5, 6]))",
+        "is_disjoint(from_list([1, 2, 3]), from_list([3, 4, 5]))"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_symmetric_difference",
+      "@type": "Function",
+      "name": "symmetric_difference",
+      "module": "gleam.set",
+      "purpose": "Creates a new set that contains members that are present in either set, but",
+      "parameters": [
+        {
+          "name": "first",
+          "label": "of",
+          "type": "Set(member)"
+        },
+        {
+          "name": "second",
+          "label": "and",
+          "type": "Set(member)"
+        }
+      ],
+      "returnType": "Set(member)",
+      "whyHelpful": "symmetric_difference(from_list([1, 2, 3]), from_list([3, 4])) |> to_list",
+      "examples": [
+        "symmetric_difference(from_list([1, 2, 3]), from_list([3, 4])) |> to_list"
+      ]
+    },
+    {
+      "@id": "ex:gleam_set_each",
+      "@type": "Function",
+      "name": "each",
+      "module": "gleam.set",
+      "purpose": "Calls a function for each member in a set, discarding the return",
+      "parameters": [
+        {
+          "name": "set",
+          "label": null,
+          "type": "Set(member)"
+        },
+        {
+          "name": "fun",
+          "label": null,
+          "type": "fn(member) -> a"
+        }
+      ],
+      "returnType": "Nil",
+      "whyHelpful": "Useful for producing a side effect for every item of a set. The order of elements in the iteration is an implementation detail that should not be relied upon.",
+      "examples": [
+        "each(set, io.println)"
+      ]
+    }
+  ]
+}

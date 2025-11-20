@@ -1,0 +1,1799 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_list_module",
+      "@type": "Module",
+      "name": "gleam.list",
+      "description": "Lists are an ordered sequence of elements and are one of the most common\n//// data types in Gleam.\n////\n//// New elements can be added and removed from the front of a list in\n//// constant time, while adding and removing from the end requires traversing\n//// and copying the whole list, so keep this in mind when designing your\n//// programs.\n////\n//// There is a dedicated syntax for prefixing to a list:\n////\n//// ```gleam\n//// let new_list = [1, 2, ..existing_list]\n//// ```\n////\n//// And a matching syntax for getting the first elements of a list:\n////\n//// ```gleam\n//// case list {\n////   [first_element, ..rest] -> first_element\n////   _ -> \"this pattern matches when the list is empty\"\n//// }\n//// ```\n////",
+      "functions": [
+        {
+          "@id": "ex:gleam_list_length"
+        },
+        {
+          "@id": "ex:gleam_list_count"
+        },
+        {
+          "@id": "ex:gleam_list_reverse"
+        },
+        {
+          "@id": "ex:gleam_list_is_empty"
+        },
+        {
+          "@id": "ex:gleam_list_contains"
+        },
+        {
+          "@id": "ex:gleam_list_first"
+        },
+        {
+          "@id": "ex:gleam_list_rest"
+        },
+        {
+          "@id": "ex:gleam_list_group"
+        },
+        {
+          "@id": "ex:gleam_list_filter"
+        },
+        {
+          "@id": "ex:gleam_list_filter_map"
+        },
+        {
+          "@id": "ex:gleam_list_map"
+        },
+        {
+          "@id": "ex:gleam_list_map2"
+        },
+        {
+          "@id": "ex:gleam_list_map_fold"
+        },
+        {
+          "@id": "ex:gleam_list_index_map"
+        },
+        {
+          "@id": "ex:gleam_list_try_map"
+        },
+        {
+          "@id": "ex:gleam_list_drop"
+        },
+        {
+          "@id": "ex:gleam_list_take"
+        },
+        {
+          "@id": "ex:gleam_list_new"
+        },
+        {
+          "@id": "ex:gleam_list_wrap"
+        },
+        {
+          "@id": "ex:gleam_list_append"
+        },
+        {
+          "@id": "ex:gleam_list_prepend"
+        },
+        {
+          "@id": "ex:gleam_list_flatten"
+        },
+        {
+          "@id": "ex:gleam_list_flat_map"
+        },
+        {
+          "@id": "ex:gleam_list_fold"
+        },
+        {
+          "@id": "ex:gleam_list_fold_right"
+        },
+        {
+          "@id": "ex:gleam_list_index_fold"
+        },
+        {
+          "@id": "ex:gleam_list_try_fold"
+        },
+        {
+          "@id": "ex:gleam_list_fold_until"
+        },
+        {
+          "@id": "ex:gleam_list_find"
+        },
+        {
+          "@id": "ex:gleam_list_find_map"
+        },
+        {
+          "@id": "ex:gleam_list_all"
+        },
+        {
+          "@id": "ex:gleam_list_any"
+        },
+        {
+          "@id": "ex:gleam_list_zip"
+        },
+        {
+          "@id": "ex:gleam_list_strict_zip"
+        },
+        {
+          "@id": "ex:gleam_list_unzip"
+        },
+        {
+          "@id": "ex:gleam_list_intersperse"
+        },
+        {
+          "@id": "ex:gleam_list_unique"
+        },
+        {
+          "@id": "ex:gleam_list_sort"
+        },
+        {
+          "@id": "ex:gleam_list_range"
+        },
+        {
+          "@id": "ex:gleam_list_repeat"
+        },
+        {
+          "@id": "ex:gleam_list_split"
+        },
+        {
+          "@id": "ex:gleam_list_split_while"
+        },
+        {
+          "@id": "ex:gleam_list_key_find"
+        },
+        {
+          "@id": "ex:gleam_list_key_filter"
+        },
+        {
+          "@id": "ex:gleam_list_key_pop"
+        },
+        {
+          "@id": "ex:gleam_list_key_set"
+        },
+        {
+          "@id": "ex:gleam_list_each"
+        },
+        {
+          "@id": "ex:gleam_list_try_each"
+        },
+        {
+          "@id": "ex:gleam_list_partition"
+        },
+        {
+          "@id": "ex:gleam_list_permutations"
+        },
+        {
+          "@id": "ex:gleam_list_window"
+        },
+        {
+          "@id": "ex:gleam_list_window_by_2"
+        },
+        {
+          "@id": "ex:gleam_list_drop_while"
+        },
+        {
+          "@id": "ex:gleam_list_take_while"
+        },
+        {
+          "@id": "ex:gleam_list_chunk"
+        },
+        {
+          "@id": "ex:gleam_list_sized_chunk"
+        },
+        {
+          "@id": "ex:gleam_list_reduce"
+        },
+        {
+          "@id": "ex:gleam_list_scan"
+        },
+        {
+          "@id": "ex:gleam_list_last"
+        },
+        {
+          "@id": "ex:gleam_list_combinations"
+        },
+        {
+          "@id": "ex:gleam_list_combination_pairs"
+        },
+        {
+          "@id": "ex:gleam_list_interleave"
+        },
+        {
+          "@id": "ex:gleam_list_transpose"
+        },
+        {
+          "@id": "ex:gleam_list_shuffle"
+        },
+        {
+          "@id": "ex:gleam_list_max"
+        },
+        {
+          "@id": "ex:gleam_list_sample"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_length",
+      "@type": "Function",
+      "name": "length",
+      "module": "gleam.list",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "of",
+          "type": "List(a)"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_list_count",
+      "@type": "Function",
+      "name": "count",
+      "module": "gleam.list",
+      "purpose": "Counts the number of elements in a given list satisfying a given predicate.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "predicate",
+          "label": "where",
+          "type": "fn(a) -> Bool"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "This function has to traverse the list to determine the number of elements,",
+      "examples": [
+        "count([], fn(a) { a > 0 })",
+        "count([1], fn(a) { a > 0 })",
+        "count([1, 2, 3], int.is_odd)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_reverse",
+      "@type": "Function",
+      "name": "reverse",
+      "module": "gleam.list",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_list_is_empty",
+      "@type": "Function",
+      "name": "is_empty",
+      "module": "gleam.list",
+      "purpose": "Determines whether or not the list is empty.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "This function runs in constant time.",
+      "examples": [
+        "is_empty([])",
+        "is_empty([1])",
+        "is_empty([1, 1])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_contains",
+      "@type": "Function",
+      "name": "contains",
+      "module": "gleam.list",
+      "purpose": "Determines whether or not a given element exists within a given list.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "elem",
+          "label": "any",
+          "type": "a"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "This function traverses the list to find the element, so it runs in linear",
+      "examples": [
+        "[] |> contains(any: 0)",
+        "[0] |> contains(any: 0)",
+        "[1] |> contains(any: 0)",
+        "[1, 1] |> contains(any: 0)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_first",
+      "@type": "Function",
+      "name": "first",
+      "module": "gleam.list",
+      "purpose": "Gets the first element from the start of the list, if there is one.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        }
+      ],
+      "returnType": "Result(a, Nil)",
+      "whyHelpful": "// -> Error(Nil)",
+      "examples": [
+        "first([])",
+        "first([0])",
+        "first([1, 2])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_rest",
+      "@type": "Function",
+      "name": "rest",
+      "module": "gleam.list",
+      "purpose": "Returns the list minus the first element. If the list is empty, `Error(Nil)` is",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        }
+      ],
+      "returnType": "Result(List(a), Nil)",
+      "whyHelpful": "This function runs in constant time and does not make a copy of the list.",
+      "examples": [
+        "rest([])",
+        "rest([0])",
+        "rest([1, 2])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_group",
+      "@type": "Function",
+      "name": "group",
+      "module": "gleam.list",
+      "purpose": "Groups the elements from the given list by the given key function.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(v)"
+        },
+        {
+          "name": "key",
+          "label": "by",
+          "type": "fn(v) -> k"
+        }
+      ],
+      "returnType": "Dict(k, List(v))",
+      "whyHelpful": "Does not preserve the initial value order.",
+      "examples": [
+        "dict.to_list"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_filter",
+      "@type": "Function",
+      "name": "filter",
+      "module": "gleam.list",
+      "purpose": "Returns a new list containing only the elements from the first list for",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "predicate",
+          "label": "keeping",
+          "type": "fn(a) -> Bool"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "which the given functions returns `True`.",
+      "examples": [
+        "filter([2, 4, 6, 1], fn(x) { x > 2 })",
+        "filter([2, 4, 6, 1], fn(x) { x > 6 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_filter_map",
+      "@type": "Function",
+      "name": "filter_map",
+      "module": "gleam.list",
+      "purpose": "Returns a new list containing only the elements from the first list for",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(a) -> Result(b, e)"
+        }
+      ],
+      "returnType": "List(b)",
+      "whyHelpful": "which the given functions returns `Ok(_)`.",
+      "examples": [
+        "filter_map([2, 4, 6, 1], Error)",
+        "filter_map([2, 4, 6, 1], fn(x) { Ok(x + 1) })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_map",
+      "@type": "Function",
+      "name": "map",
+      "module": "gleam.list",
+      "purpose": "Returns a new list containing only the elements of the first list after the",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(a) -> b"
+        }
+      ],
+      "returnType": "List(b)",
+      "whyHelpful": "function has been applied to each one.",
+      "examples": [
+        "map([2, 4, 6], fn(x) { x * 2 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_map2",
+      "@type": "Function",
+      "name": "map2",
+      "module": "gleam.list",
+      "purpose": "Combines two lists into a single list using the given function.",
+      "parameters": [
+        {
+          "name": "list1",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "list2",
+          "label": null,
+          "type": "List(b)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(a, b) -> c"
+        }
+      ],
+      "returnType": "List(c)",
+      "whyHelpful": "If a list is longer than the other the extra elements are dropped.",
+      "examples": [
+        "map2([1, 2, 3], [4, 5, 6], fn(x, y) { x + y })",
+        "map2([1, 2], [\"a\", \"b\", \"c\"], fn(i, x) { #(i, x) })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_map_fold",
+      "@type": "Function",
+      "name": "map_fold",
+      "module": "gleam.list",
+      "purpose": "Similar to `map` but also lets you pass around an accumulated value.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "over",
+          "type": "List(a)"
+        },
+        {
+          "name": "initial",
+          "label": "from",
+          "type": "acc"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(acc, a) -> #(acc, b)"
+        }
+      ],
+      "returnType": "#(acc, List(b))",
+      "whyHelpful": "over: [1, 2, 3],",
+      "examples": [
+        ")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_index_map",
+      "@type": "Function",
+      "name": "index_map",
+      "module": "gleam.list",
+      "purpose": "Returns a new list containing only the elements of the first list after the",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(a, Int) -> b"
+        }
+      ],
+      "returnType": "List(b)",
+      "whyHelpful": "function has been applied to each one and their index.",
+      "examples": [
+        "index_map([\"a\", \"b\"], fn(x, i) { #(i, x) })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_try_map",
+      "@type": "Function",
+      "name": "try_map",
+      "module": "gleam.list",
+      "purpose": "Takes a function that returns a `Result` and applies it to each element in a",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "over",
+          "type": "List(a)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(a) -> Result(b, e)"
+        }
+      ],
+      "returnType": "Result(List(b), e)",
+      "whyHelpful": "given list in turn.",
+      "examples": [
+        "try_map([1, 2, 3], fn(x) { Ok(x + 2) })",
+        "try_map([1, 2, 3], fn(_) { Error(0) })",
+        "try_map([[1], [2, 3]], first)",
+        "try_map([[1], [], [2]], first)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_drop",
+      "@type": "Function",
+      "name": "drop",
+      "module": "gleam.list",
+      "purpose": "Returns a list that is the given list with up to the given number of",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "from",
+          "type": "List(a)"
+        },
+        {
+          "name": "n",
+          "label": "up_to",
+          "type": "Int"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "elements removed from the front of the list.",
+      "examples": [
+        "drop([1, 2, 3, 4], 2)",
+        "drop([1, 2, 3, 4], 9)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_take",
+      "@type": "Function",
+      "name": "take",
+      "module": "gleam.list",
+      "purpose": "Returns a list containing the first given number of elements from the given",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "from",
+          "type": "List(a)"
+        },
+        {
+          "name": "n",
+          "label": "up_to",
+          "type": "Int"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "If the element has less than the number of elements then the full list is",
+      "examples": [
+        "take([1, 2, 3, 4], 2)",
+        "take([1, 2, 3, 4], 9)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_new",
+      "@type": "Function",
+      "name": "new",
+      "module": "gleam.list",
+      "purpose": "Returns a new empty list.",
+      "parameters": [],
+      "returnType": "List(a)",
+      "whyHelpful": "",
+      "examples": [
+        "new()"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_wrap",
+      "@type": "Function",
+      "name": "wrap",
+      "module": "gleam.list",
+      "purpose": "Returns the given item wrapped in a list.",
+      "parameters": [
+        {
+          "name": "item",
+          "label": null,
+          "type": "a"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "wrap([\"a\", \"b\", \"c\"])",
+      "examples": [
+        "wrap(1)",
+        "wrap([\"a\", \"b\", \"c\"])",
+        "wrap([[]])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_append",
+      "@type": "Function",
+      "name": "append",
+      "module": "gleam.list",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "first",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "second",
+          "label": null,
+          "type": "List(a)"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_list_prepend",
+      "@type": "Function",
+      "name": "prepend",
+      "module": "gleam.list",
+      "purpose": "Prefixes an item to a list. This can also be done using the dedicated",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "to",
+          "type": "List(a)"
+        },
+        {
+          "name": "item",
+          "label": "this",
+          "type": "a"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "syntax instead",
+      "examples": [
+        "[1, ..existing_list]",
+        "prepend(to: existing_list, this: 1)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_flatten",
+      "@type": "Function",
+      "name": "flatten",
+      "module": "gleam.list",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "lists",
+          "label": null,
+          "type": "List(List(a))"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_list_flat_map",
+      "@type": "Function",
+      "name": "flat_map",
+      "module": "gleam.list",
+      "purpose": "Maps the list with the given function into a list of lists, and then flattens it.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "over",
+          "type": "List(a)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(a) -> List(b)"
+        }
+      ],
+      "returnType": "List(b)",
+      "whyHelpful": "flat_map([2, 4, 6], fn(x) { [x, x + 1] })",
+      "examples": [
+        "flat_map([2, 4, 6], fn(x) { [x, x + 1] })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_fold",
+      "@type": "Function",
+      "name": "fold",
+      "module": "gleam.list",
+      "purpose": "Reduces a list of elements into a single value by calling a given function",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "over",
+          "type": "List(a)"
+        },
+        {
+          "name": "initial",
+          "label": "from",
+          "type": "acc"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(acc, a) -> acc"
+        }
+      ],
+      "returnType": "acc",
+      "whyHelpful": "on each element, going from left to right.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_list_fold_right",
+      "@type": "Function",
+      "name": "fold_right",
+      "module": "gleam.list",
+      "purpose": "Reduces a list of elements into a single value by calling a given function",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "over",
+          "type": "List(a)"
+        },
+        {
+          "name": "initial",
+          "label": "from",
+          "type": "acc"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(acc, a) -> acc"
+        }
+      ],
+      "returnType": "acc",
+      "whyHelpful": "This function runs in linear time. Unlike `fold` this function is not tail recursive.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_list_index_fold",
+      "@type": "Function",
+      "name": "index_fold",
+      "module": "gleam.list",
+      "purpose": "Like fold but the folding function also receives the index of the current element.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "over",
+          "type": "List(a)"
+        },
+        {
+          "name": "initial",
+          "label": "from",
+          "type": "acc"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(acc, a, Int) -> acc"
+        }
+      ],
+      "returnType": "acc",
+      "whyHelpful": "[\"a\", \"b\", \"c\"]",
+      "examples": [
+        "})",
+        "index_fold(0, fn(acc, item, index) { acc + item * index })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_try_fold",
+      "@type": "Function",
+      "name": "try_fold",
+      "module": "gleam.list",
+      "purpose": "A variant of fold that might fail.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "over",
+          "type": "List(a)"
+        },
+        {
+          "name": "initial",
+          "label": "from",
+          "type": "acc"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(acc, a) -> Result(acc, e)"
+        }
+      ],
+      "returnType": "Result(acc, e)",
+      "whyHelpful": "The folding function should return `Result(accumulator, error)`.",
+      "examples": [
+        "})"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_fold_until",
+      "@type": "Function",
+      "name": "fold_until",
+      "module": "gleam.list",
+      "purpose": "A variant of fold that allows to stop folding earlier.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "over",
+          "type": "List(a)"
+        },
+        {
+          "name": "initial",
+          "label": "from",
+          "type": "acc"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(acc, a) -> ContinueOrStop(acc)"
+        }
+      ],
+      "returnType": "acc",
+      "whyHelpful": "The folding function should return `ContinueOrStop(accumulator)`.",
+      "examples": [
+        "})"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_find",
+      "@type": "Function",
+      "name": "find",
+      "module": "gleam.list",
+      "purpose": "Finds the first element in a given list for which the given function returns",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "in",
+          "type": "List(a)"
+        },
+        {
+          "name": "is_desired",
+          "label": "one_that",
+          "type": "fn(a) -> Bool"
+        }
+      ],
+      "returnType": "Result(a, Nil)",
+      "whyHelpful": "Returns `Error(Nil)` if no such element is found.",
+      "examples": [
+        "find([1, 2, 3], fn(x) { x > 2 })",
+        "find([1, 2, 3], fn(x) { x > 4 })",
+        "find([], fn(_) { True })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_find_map",
+      "@type": "Function",
+      "name": "find_map",
+      "module": "gleam.list",
+      "purpose": "Finds the first element in a given list for which the given function returns",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "in",
+          "type": "List(a)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(a) -> Result(b, c)"
+        }
+      ],
+      "returnType": "Result(b, Nil)",
+      "whyHelpful": "`Ok(new_value)`, then returns the wrapped `new_value`.",
+      "examples": [
+        "find_map([[], [2], [3]], first)",
+        "find_map([[], []], first)",
+        "find_map([], first)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_all",
+      "@type": "Function",
+      "name": "all",
+      "module": "gleam.list",
+      "purpose": "Returns `True` if the given function returns `True` for all the elements in",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "in",
+          "type": "List(a)"
+        },
+        {
+          "name": "predicate",
+          "label": "satisfying",
+          "type": "fn(a) -> Bool"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "the given list. If the function returns `False` for any of the elements it",
+      "examples": [
+        "all([], fn(x) { x > 3 })",
+        "all([4, 5], fn(x) { x > 3 })",
+        "all([4, 3], fn(x) { x > 3 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_any",
+      "@type": "Function",
+      "name": "any",
+      "module": "gleam.list",
+      "purpose": "Returns `True` if the given function returns `True` for any the elements in",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "in",
+          "type": "List(a)"
+        },
+        {
+          "name": "predicate",
+          "label": "satisfying",
+          "type": "fn(a) -> Bool"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "the given list. If the function returns `True` for any of the elements it",
+      "examples": [
+        "any([], fn(x) { x > 3 })",
+        "any([4, 5], fn(x) { x > 3 })",
+        "any([4, 3], fn(x) { x > 4 })",
+        "any([3, 4], fn(x) { x > 3 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_zip",
+      "@type": "Function",
+      "name": "zip",
+      "module": "gleam.list",
+      "purpose": "Takes two lists and returns a single list of 2-element tuples.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "other",
+          "label": "with",
+          "type": "List(b)"
+        }
+      ],
+      "returnType": "List(#(a, b))",
+      "whyHelpful": "If one of the lists is longer than the other, the remaining elements from",
+      "examples": [
+        "zip([], [])",
+        "zip([1, 2], [3])",
+        "zip([1], [3, 4])",
+        "zip([1, 2], [3, 4])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_strict_zip",
+      "@type": "Function",
+      "name": "strict_zip",
+      "module": "gleam.list",
+      "purpose": "Takes two lists and returns a single list of 2-element tuples.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "other",
+          "label": "with",
+          "type": "List(b)"
+        }
+      ],
+      "returnType": "Result(List(#(a, b)), Nil)",
+      "whyHelpful": "If one of the lists is longer than the other, an `Error` is returned.",
+      "examples": [
+        "strict_zip([], [])",
+        "strict_zip([1, 2], [3])",
+        "strict_zip([1], [3, 4])",
+        "strict_zip([1, 2], [3, 4])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_unzip",
+      "@type": "Function",
+      "name": "unzip",
+      "module": "gleam.list",
+      "purpose": "Takes a single list of 2-element tuples and returns two lists.",
+      "parameters": [
+        {
+          "name": "input",
+          "label": null,
+          "type": "List(#(a, b))"
+        }
+      ],
+      "returnType": "#(List(a), List(b))",
+      "whyHelpful": "unzip([#(1, 2), #(3, 4)])",
+      "examples": [
+        "unzip([#(1, 2), #(3, 4)])",
+        "unzip([])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_intersperse",
+      "@type": "Function",
+      "name": "intersperse",
+      "module": "gleam.list",
+      "purpose": "Inserts a given value between each existing element in a given list.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "elem",
+          "label": "with",
+          "type": "a"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "This function runs in linear time and copies the list.",
+      "examples": [
+        "intersperse([1, 1, 1], 2)",
+        "intersperse([], 2)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_unique",
+      "@type": "Function",
+      "name": "unique",
+      "module": "gleam.list",
+      "purpose": "Removes any duplicate elements from a given list.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "This function returns in loglinear time.",
+      "examples": [
+        "unique([1, 1, 1, 4, 7, 3, 3, 4])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_sort",
+      "@type": "Function",
+      "name": "sort",
+      "module": "gleam.list",
+      "purpose": "Sorts from smallest to largest based upon the ordering specified by a given",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "compare",
+          "label": "by",
+          "type": "fn(a, a) -> Order"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "import gleam/int",
+      "examples": [
+        "sort([4, 3, 6, 5, 4, 1, 2], by: int.compare)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_range",
+      "@type": "Function",
+      "name": "range",
+      "module": "gleam.list",
+      "purpose": "Creates a list of ints ranging from a given start and finish.",
+      "parameters": [
+        {
+          "name": "start",
+          "label": "from",
+          "type": "Int"
+        },
+        {
+          "name": "stop",
+          "label": "to",
+          "type": "Int"
+        }
+      ],
+      "returnType": "List(Int)",
+      "whyHelpful": "range(0, 0)",
+      "examples": [
+        "range(0, 0)",
+        "range(0, 5)",
+        "range(1, -5)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_repeat",
+      "@type": "Function",
+      "name": "repeat",
+      "module": "gleam.list",
+      "purpose": "Builds a list of a given value a given number of times.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": "item",
+          "type": "a"
+        },
+        {
+          "name": "times",
+          "label": "times",
+          "type": "Int"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "repeat(\"a\", times: 0)",
+      "examples": [
+        "repeat(\"a\", times: 0)",
+        "repeat(\"a\", times: 5)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_split",
+      "@type": "Function",
+      "name": "split",
+      "module": "gleam.list",
+      "purpose": "Splits a list in two before the given index.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "list",
+          "type": "List(a)"
+        },
+        {
+          "name": "index",
+          "label": "at",
+          "type": "Int"
+        }
+      ],
+      "returnType": "#(List(a), List(a))",
+      "whyHelpful": "If the list is not long enough to have the given index the before list will",
+      "examples": [
+        "split([6, 7, 8, 9], 0)",
+        "split([6, 7, 8, 9], 2)",
+        "split([6, 7, 8, 9], 4)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_split_while",
+      "@type": "Function",
+      "name": "split_while",
+      "module": "gleam.list",
+      "purpose": "Splits a list in two before the first element that a given function returns",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "list",
+          "type": "List(a)"
+        },
+        {
+          "name": "predicate",
+          "label": "satisfying",
+          "type": "fn(a) -> Bool"
+        }
+      ],
+      "returnType": "#(List(a), List(a))",
+      "whyHelpful": "`False` for.",
+      "examples": [
+        "split_while([1, 2, 3, 4, 5], fn(x) { x <= 3 })",
+        "split_while([1, 2, 3, 4, 5], fn(x) { x <= 5 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_key_find",
+      "@type": "Function",
+      "name": "key_find",
+      "module": "gleam.list",
+      "purpose": "Given a list of 2-element tuples, finds the first tuple that has a given",
+      "parameters": [
+        {
+          "name": "keyword_list",
+          "label": "in",
+          "type": "List(#(k, v))"
+        },
+        {
+          "name": "desired_key",
+          "label": "find",
+          "type": "k"
+        }
+      ],
+      "returnType": "Result(v, Nil)",
+      "whyHelpful": "key as the first element and returns the second element.",
+      "examples": [
+        "key_find([#(\"a\", 0), #(\"b\", 1)], \"a\")",
+        "key_find([#(\"a\", 0), #(\"b\", 1)], \"b\")",
+        "key_find([#(\"a\", 0), #(\"b\", 1)], \"c\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_key_filter",
+      "@type": "Function",
+      "name": "key_filter",
+      "module": "gleam.list",
+      "purpose": "Given a list of 2-element tuples, finds all tuples that have a given",
+      "parameters": [
+        {
+          "name": "keyword_list",
+          "label": "in",
+          "type": "List(#(k, v))"
+        },
+        {
+          "name": "desired_key",
+          "label": "find",
+          "type": "k"
+        }
+      ],
+      "returnType": "List(v)",
+      "whyHelpful": "key as the first element and returns the second element.",
+      "examples": [
+        "key_filter([#(\"a\", 0), #(\"b\", 1), #(\"a\", 2)], \"a\")",
+        "key_filter([#(\"a\", 0), #(\"b\", 1)], \"c\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_key_pop",
+      "@type": "Function",
+      "name": "key_pop",
+      "module": "gleam.list",
+      "purpose": "Given a list of 2-element tuples, finds the first tuple that has a given",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(#(k, v))"
+        },
+        {
+          "name": "key",
+          "label": null,
+          "type": "k"
+        }
+      ],
+      "returnType": "Result(#(v, List(#(k, v))), Nil)",
+      "whyHelpful": "This function will return the second element of the found tuple and list with tuple removed. If no tuple is found with the given key then `Error(Nil)` is returned.",
+      "examples": [
+        "key_pop([#(\"a\", 0), #(\"b\", 1)], \"a\")",
+        "key_pop([#(\"a\", 0), #(\"b\", 1)], \"b\")",
+        "key_pop([#(\"a\", 0), #(\"b\", 1)], \"c\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_key_set",
+      "@type": "Function",
+      "name": "key_set",
+      "module": "gleam.list",
+      "purpose": "Given a list of 2-element tuples, inserts a key and value into the list.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(#(k, v))"
+        },
+        {
+          "name": "key",
+          "label": null,
+          "type": "k"
+        },
+        {
+          "name": "value",
+          "label": null,
+          "type": "v"
+        }
+      ],
+      "returnType": "List(#(k, v))",
+      "whyHelpful": "If there was already a tuple with the key then it is replaced, otherwise it",
+      "examples": [
+        "key_set([#(5, 0), #(4, 1)], 4, 100)",
+        "key_set([#(5, 0), #(4, 1)], 1, 100)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_each",
+      "@type": "Function",
+      "name": "each",
+      "module": "gleam.list",
+      "purpose": "Calls a function for each element in a list, discarding the return value.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "f",
+          "label": null,
+          "type": "fn(a) -> b"
+        }
+      ],
+      "returnType": "Nil",
+      "whyHelpful": "Useful for calling a side effect for every item of a list.",
+      "examples": [
+        "each([\"1\", \"2\", \"3\"], io.println)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_try_each",
+      "@type": "Function",
+      "name": "try_each",
+      "module": "gleam.list",
+      "purpose": "Calls a `Result` returning function for each element in a list, discarding",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "over",
+          "type": "List(a)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(a) -> Result(b, e)"
+        }
+      ],
+      "returnType": "Result(Nil, e)",
+      "whyHelpful": "the return value. If the function returns `Error` then the iteration is",
+      "examples": [
+        ")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_partition",
+      "@type": "Function",
+      "name": "partition",
+      "module": "gleam.list",
+      "purpose": "Partitions a list into a tuple/pair of lists",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "categorise",
+          "label": "with",
+          "type": "fn(a) -> Bool"
+        }
+      ],
+      "returnType": "#(List(a), List(a))",
+      "whyHelpful": "by a given categorisation function.",
+      "examples": [
+        "[1, 2, 3, 4, 5] |> partition(int.is_odd)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_permutations",
+      "@type": "Function",
+      "name": "permutations",
+      "module": "gleam.list",
+      "purpose": "Returns all the permutations of a list.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        }
+      ],
+      "returnType": "List(List(a))",
+      "whyHelpful": "permutations([1, 2])",
+      "examples": [
+        "permutations([1, 2])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_window",
+      "@type": "Function",
+      "name": "window",
+      "module": "gleam.list",
+      "purpose": "Returns a list of sliding windows.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "n",
+          "label": "by",
+          "type": "Int"
+        }
+      ],
+      "returnType": "List(List(a))",
+      "whyHelpful": "window([1,2,3,4,5], 3)",
+      "examples": [
+        "window([1,2,3,4,5], 3)",
+        "window([1, 2], 4)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_window_by_2",
+      "@type": "Function",
+      "name": "window_by_2",
+      "module": "gleam.list",
+      "purpose": "Returns a list of tuples containing two contiguous elements.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        }
+      ],
+      "returnType": "List(#(a, a))",
+      "whyHelpful": "window_by_2([1,2,3,4])",
+      "examples": [
+        "window_by_2([1,2,3,4])",
+        "window_by_2([1])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_drop_while",
+      "@type": "Function",
+      "name": "drop_while",
+      "module": "gleam.list",
+      "purpose": "Drops the first elements in a given list for which the predicate function returns `True`.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "in",
+          "type": "List(a)"
+        },
+        {
+          "name": "predicate",
+          "label": "satisfying",
+          "type": "fn(a) -> Bool"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "drop_while([1, 2, 3, 4], fn (x) { x < 3 })",
+      "examples": [
+        "drop_while([1, 2, 3, 4], fn (x) { x < 3 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_take_while",
+      "@type": "Function",
+      "name": "take_while",
+      "module": "gleam.list",
+      "purpose": "Takes the first elements in a given list for which the predicate function returns `True`.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "in",
+          "type": "List(a)"
+        },
+        {
+          "name": "predicate",
+          "label": "satisfying",
+          "type": "fn(a) -> Bool"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "take_while([1, 2, 3, 2, 4], fn (x) { x < 3 })",
+      "examples": [
+        "take_while([1, 2, 3, 2, 4], fn (x) { x < 3 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_chunk",
+      "@type": "Function",
+      "name": "chunk",
+      "module": "gleam.list",
+      "purpose": "Returns a list of chunks in which",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "in",
+          "type": "List(a)"
+        },
+        {
+          "name": "f",
+          "label": "by",
+          "type": "fn(a) -> k"
+        }
+      ],
+      "returnType": "List(List(a))",
+      "whyHelpful": "the return value of calling `f` on each element is the same.",
+      "examples": [
+        "[1, 2, 2, 3, 4, 4, 6, 7, 7] |> chunk(by: fn(n) { n % 2 })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_sized_chunk",
+      "@type": "Function",
+      "name": "sized_chunk",
+      "module": "gleam.list",
+      "purpose": "Returns a list of chunks containing `count` elements each.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "in",
+          "type": "List(a)"
+        },
+        {
+          "name": "count",
+          "label": "into",
+          "type": "Int"
+        }
+      ],
+      "returnType": "List(List(a))",
+      "whyHelpful": "If the last chunk does not have `count` elements, it is instead",
+      "examples": [
+        "[1, 2, 3, 4, 5, 6] |> sized_chunk(into: 2)",
+        "[1, 2, 3, 4, 5, 6, 7, 8] |> sized_chunk(into: 3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_reduce",
+      "@type": "Function",
+      "name": "reduce",
+      "module": "gleam.list",
+      "purpose": "This function acts similar to fold, but does not take an initial state.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "over",
+          "type": "List(a)"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(a, a) -> a"
+        }
+      ],
+      "returnType": "Result(a, Nil)",
+      "whyHelpful": "This function acts similar to fold, but does not take an initial state. Instead, it starts from the first element in the list and combines it with each subsequent element in turn using the given function.",
+      "examples": [
+        "[] |> reduce(fn(acc, x) { acc + x })",
+        "[1, 2, 3, 4, 5] |> reduce(fn(acc, x) { acc + x })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_scan",
+      "@type": "Function",
+      "name": "scan",
+      "module": "gleam.list",
+      "purpose": "Similar to `fold`, but yields the state of the accumulator at each stage.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "over",
+          "type": "List(a)"
+        },
+        {
+          "name": "initial",
+          "label": "from",
+          "type": "acc"
+        },
+        {
+          "name": "fun",
+          "label": "with",
+          "type": "fn(acc, a) -> acc"
+        }
+      ],
+      "returnType": "List(acc)",
+      "whyHelpful": "scan(over: [1, 2, 3], from: 100, with: fn(acc, i) { acc + i })",
+      "examples": [
+        "scan(over: [1, 2, 3], from: 100, with: fn(acc, i) { acc + i })"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_last",
+      "@type": "Function",
+      "name": "last",
+      "module": "gleam.list",
+      "purpose": "Returns the last element in the given list.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        }
+      ],
+      "returnType": "Result(a, Nil)",
+      "whyHelpful": "Returns `Error(Nil)` if the list is empty.",
+      "examples": [
+        "last([])",
+        "last([1, 2, 3, 4, 5])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_combinations",
+      "@type": "Function",
+      "name": "combinations",
+      "module": "gleam.list",
+      "purpose": "Return unique combinations of elements in the list.",
+      "parameters": [
+        {
+          "name": "items",
+          "label": null,
+          "type": "List(a)"
+        },
+        {
+          "name": "n",
+          "label": "by",
+          "type": "Int"
+        }
+      ],
+      "returnType": "List(List(a))",
+      "whyHelpful": "combinations([1, 2, 3], 2)",
+      "examples": [
+        "combinations([1, 2, 3], 2)",
+        "combinations([1, 2, 3, 4], 3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_combination_pairs",
+      "@type": "Function",
+      "name": "combination_pairs",
+      "module": "gleam.list",
+      "purpose": "Return unique pair combinations of elements in the list.",
+      "parameters": [
+        {
+          "name": "items",
+          "label": null,
+          "type": "List(a)"
+        }
+      ],
+      "returnType": "List(#(a, a))",
+      "whyHelpful": "combination_pairs([1, 2, 3])",
+      "examples": [
+        "combination_pairs([1, 2, 3])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_interleave",
+      "@type": "Function",
+      "name": "interleave",
+      "module": "gleam.list",
+      "purpose": "Make a list alternating the elements from the given lists",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(List(a))"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "interleave([[1, 2], [101, 102], [201, 202]])",
+      "examples": [
+        "interleave([[1, 2], [101, 102], [201, 202]])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_transpose",
+      "@type": "Function",
+      "name": "transpose",
+      "module": "gleam.list",
+      "purpose": "Transpose rows and columns of the list of lists.",
+      "parameters": [
+        {
+          "name": "list_of_lists",
+          "label": null,
+          "type": "List(List(a))"
+        }
+      ],
+      "returnType": "List(List(a))",
+      "whyHelpful": "Notice: This function is not tail recursive,",
+      "examples": [
+        "transpose([[1, 2, 3], [101, 102, 103]])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_shuffle",
+      "@type": "Function",
+      "name": "shuffle",
+      "module": "gleam.list",
+      "purpose": "Takes a list, randomly sorts all items and returns the shuffled list.",
+      "parameters": [
+        {
+          "name": "list",
+          "label": null,
+          "type": "List(a)"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "This function uses `float.random` to decide the order of the elements.",
+      "examples": [
+        "range(1, 10) |> shuffle()"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_max",
+      "@type": "Function",
+      "name": "max",
+      "module": "gleam.list",
+      "purpose": "Takes a list and a comparator, and returns the maximum element in the list",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "over",
+          "type": "List(a)"
+        },
+        {
+          "name": "compare",
+          "label": "with",
+          "type": "fn(a, a) -> Order"
+        }
+      ],
+      "returnType": "Result(a, Nil)",
+      "whyHelpful": "range(1, 10) |> list.max(int.compare)",
+      "examples": [
+        "range(1, 10) |> list.max(int.compare)",
+        "[\"a\", \"c\", \"b\"] |> list.max(string.compare)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_list_sample",
+      "@type": "Function",
+      "name": "sample",
+      "module": "gleam.list",
+      "purpose": "Returns a random sample of up to n elements from a list using reservoir",
+      "parameters": [
+        {
+          "name": "list",
+          "label": "from",
+          "type": "List(a)"
+        },
+        {
+          "name": "n",
+          "label": "up_to",
+          "type": "Int"
+        }
+      ],
+      "returnType": "List(a)",
+      "whyHelpful": "sampling via [Algorithm L](https://en.wikipedia.org/wiki/Reservoir_sampling#Optimal:_Algorithm_L).",
+      "examples": [
+        "reservoir_sample([1, 2, 3, 4, 5], 3)"
+      ]
+    }
+  ]
+}

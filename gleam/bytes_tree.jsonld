@@ -1,0 +1,320 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_bytes_tree_module",
+      "@type": "Module",
+      "name": "gleam.bytes_tree",
+      "description": "`BytesTree` is a type used for efficiently building binary content to be\n//// written to a file or a socket. Internally it is represented as tree so to\n//// append or prepend to a bytes tree is a constant time operation that\n//// allocates a new node in the tree without copying any of the content. When\n//// writing to an output stream the tree is traversed and the content is sent\n//// directly rather than copying it into a single buffer beforehand.\n////\n//// If we append one bit array to another the bit arrays must be copied to a\n//// new location in memory so that they can sit together. This behaviour\n//// enables efficient reading of the data but copying can be expensive,\n//// especially if we want to join many bit arrays together.\n////\n//// BytesTree is different in that it can be joined together in constant\n//// time using minimal memory, and then can be efficiently converted to a\n//// bit array using the `to_bit_array` function.\n////\n//// Byte trees are always byte aligned, so that a number of bits that is not\n//// divisible by 8 will be padded with 0s.\n////\n//// On Erlang this type is compatible with Erlang's iolists.",
+      "functions": [
+        {
+          "@id": "ex:gleam_bytes_tree_new"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_prepend"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_append"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_prepend_tree"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_append_tree"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_prepend_string"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_append_string"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_concat"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_concat_bit_arrays"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_from_string"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_from_string_tree"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_from_bit_array"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_to_bit_array"
+        },
+        {
+          "@id": "ex:gleam_bytes_tree_byte_size"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_new",
+      "@type": "Function",
+      "name": "new",
+      "module": "gleam.bytes_tree",
+      "purpose": "Create an empty `BytesTree`. Useful as the start of a pipe chaining many",
+      "parameters": [],
+      "returnType": "BytesTree",
+      "whyHelpful": "trees together.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_prepend",
+      "@type": "Function",
+      "name": "prepend",
+      "module": "gleam.bytes_tree",
+      "purpose": "Prepends a bit array to the start of a bytes tree.",
+      "parameters": [
+        {
+          "name": "second",
+          "label": "to",
+          "type": "BytesTree"
+        },
+        {
+          "name": "first",
+          "label": "prefix",
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "BytesTree",
+      "whyHelpful": "Runs in constant time.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_append",
+      "@type": "Function",
+      "name": "append",
+      "module": "gleam.bytes_tree",
+      "purpose": "Appends a bit array to the end of a bytes tree.",
+      "parameters": [
+        {
+          "name": "first",
+          "label": "to",
+          "type": "BytesTree"
+        },
+        {
+          "name": "second",
+          "label": "suffix",
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "BytesTree",
+      "whyHelpful": "Runs in constant time.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_prepend_tree",
+      "@type": "Function",
+      "name": "prepend_tree",
+      "module": "gleam.bytes_tree",
+      "purpose": "Prepends a bytes tree onto the start of another.",
+      "parameters": [
+        {
+          "name": "second",
+          "label": "to",
+          "type": "BytesTree"
+        },
+        {
+          "name": "first",
+          "label": "prefix",
+          "type": "BytesTree"
+        }
+      ],
+      "returnType": "BytesTree",
+      "whyHelpful": "Runs in constant time.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_append_tree",
+      "@type": "Function",
+      "name": "append_tree",
+      "module": "gleam.bytes_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "first",
+          "label": "to",
+          "type": "BytesTree"
+        },
+        {
+          "name": "second",
+          "label": "suffix",
+          "type": "BytesTree"
+        }
+      ],
+      "returnType": "BytesTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_prepend_string",
+      "@type": "Function",
+      "name": "prepend_string",
+      "module": "gleam.bytes_tree",
+      "purpose": "Prepends a string onto the start of a bytes tree.",
+      "parameters": [
+        {
+          "name": "second",
+          "label": "to",
+          "type": "BytesTree"
+        },
+        {
+          "name": "first",
+          "label": "prefix",
+          "type": "String"
+        }
+      ],
+      "returnType": "BytesTree",
+      "whyHelpful": "Runs in constant time when running on Erlang.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_append_string",
+      "@type": "Function",
+      "name": "append_string",
+      "module": "gleam.bytes_tree",
+      "purpose": "Appends a string onto the end of a bytes tree.",
+      "parameters": [
+        {
+          "name": "first",
+          "label": "to",
+          "type": "BytesTree"
+        },
+        {
+          "name": "second",
+          "label": "suffix",
+          "type": "String"
+        }
+      ],
+      "returnType": "BytesTree",
+      "whyHelpful": "Runs in constant time when running on Erlang.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_concat",
+      "@type": "Function",
+      "name": "concat",
+      "module": "gleam.bytes_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "trees",
+          "label": null,
+          "type": "List(BytesTree)"
+        }
+      ],
+      "returnType": "BytesTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_concat_bit_arrays",
+      "@type": "Function",
+      "name": "concat_bit_arrays",
+      "module": "gleam.bytes_tree",
+      "purpose": "Joins a list of bit arrays into a single bytes tree.",
+      "parameters": [
+        {
+          "name": "bits",
+          "label": null,
+          "type": "List(BitArray)"
+        }
+      ],
+      "returnType": "BytesTree",
+      "whyHelpful": "Runs in constant time.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_from_string",
+      "@type": "Function",
+      "name": "from_string",
+      "module": "gleam.bytes_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "BytesTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_from_string_tree",
+      "@type": "Function",
+      "name": "from_string_tree",
+      "module": "gleam.bytes_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": null,
+          "type": "string_tree.StringTree"
+        }
+      ],
+      "returnType": "BytesTree",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_from_bit_array",
+      "@type": "Function",
+      "name": "from_bit_array",
+      "module": "gleam.bytes_tree",
+      "purpose": "Creates a new bytes tree from a bit array.",
+      "parameters": [
+        {
+          "name": "bits",
+          "label": null,
+          "type": "BitArray"
+        }
+      ],
+      "returnType": "BytesTree",
+      "whyHelpful": "Runs in constant time.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_to_bit_array",
+      "@type": "Function",
+      "name": "to_bit_array",
+      "module": "gleam.bytes_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": null,
+          "type": "BytesTree"
+        }
+      ],
+      "returnType": "BitArray",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_bytes_tree_byte_size",
+      "@type": "Function",
+      "name": "byte_size",
+      "module": "gleam.bytes_tree",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "tree",
+          "label": null,
+          "type": "BytesTree"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "",
+      "examples": []
+    }
+  ]
+}

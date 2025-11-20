@@ -1,0 +1,305 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_bool_module",
+      "@type": "Module",
+      "name": "gleam.bool",
+      "description": "A type with two possible values, `True` and `False`. Used to indicate whether\n//// things are... true or false!\n////\n//// Often is it clearer and offers more type safety to define a custom type\n//// than to use `Bool`. For example, rather than having a `is_teacher: Bool`\n//// field consider having a `role: SchoolRole` field where `SchoolRole` is a custom\n//// type that can be either `Student` or `Teacher`.",
+      "functions": [
+        {
+          "@id": "ex:gleam_bool_and"
+        },
+        {
+          "@id": "ex:gleam_bool_or"
+        },
+        {
+          "@id": "ex:gleam_bool_negate"
+        },
+        {
+          "@id": "ex:gleam_bool_nor"
+        },
+        {
+          "@id": "ex:gleam_bool_nand"
+        },
+        {
+          "@id": "ex:gleam_bool_exclusive_or"
+        },
+        {
+          "@id": "ex:gleam_bool_exclusive_nor"
+        },
+        {
+          "@id": "ex:gleam_bool_to_string"
+        },
+        {
+          "@id": "ex:gleam_bool_guard"
+        },
+        {
+          "@id": "ex:gleam_bool_lazy_guard"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_bool_and",
+      "@type": "Function",
+      "name": "and",
+      "module": "gleam.bool",
+      "purpose": "Returns the and of two bools, but it evaluates both arguments.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Bool"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Bool"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "It's the function equivalent of the `&&` operator.",
+      "examples": [
+        "and(True, True)",
+        "and(False, True)",
+        "False |> and(True)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_bool_or",
+      "@type": "Function",
+      "name": "or",
+      "module": "gleam.bool",
+      "purpose": "Returns the or of two bools, but it evaluates both arguments.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Bool"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Bool"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "It's the function equivalent of the `||` operator.",
+      "examples": [
+        "or(True, True)",
+        "or(False, True)",
+        "False |> or(True)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_bool_negate",
+      "@type": "Function",
+      "name": "negate",
+      "module": "gleam.bool",
+      "purpose": "Returns the opposite bool value.",
+      "parameters": [
+        {
+          "name": "bool",
+          "label": null,
+          "type": "Bool"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "This is the same as the `!` or `not` operators in some other languages.",
+      "examples": [
+        "negate(True)",
+        "negate(False)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_bool_nor",
+      "@type": "Function",
+      "name": "nor",
+      "module": "gleam.bool",
+      "purpose": "Returns the nor of two bools.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Bool"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Bool"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "nor(False, False)",
+      "examples": [
+        "nor(False, False)",
+        "nor(False, True)",
+        "nor(True, False)",
+        "nor(True, True)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_bool_nand",
+      "@type": "Function",
+      "name": "nand",
+      "module": "gleam.bool",
+      "purpose": "Returns the nand of two bools.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Bool"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Bool"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "nand(False, False)",
+      "examples": [
+        "nand(False, False)",
+        "nand(False, True)",
+        "nand(True, False)",
+        "nand(True, True)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_bool_exclusive_or",
+      "@type": "Function",
+      "name": "exclusive_or",
+      "module": "gleam.bool",
+      "purpose": "Returns the exclusive or of two bools.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Bool"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Bool"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "exclusive_or(False, False)",
+      "examples": [
+        "exclusive_or(False, False)",
+        "exclusive_or(False, True)",
+        "exclusive_or(True, False)",
+        "exclusive_or(True, True)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_bool_exclusive_nor",
+      "@type": "Function",
+      "name": "exclusive_nor",
+      "module": "gleam.bool",
+      "purpose": "Returns the exclusive nor of two bools.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Bool"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Bool"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "exclusive_nor(False, False)",
+      "examples": [
+        "exclusive_nor(False, False)",
+        "exclusive_nor(False, True)",
+        "exclusive_nor(True, False)",
+        "exclusive_nor(True, True)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_bool_to_string",
+      "@type": "Function",
+      "name": "to_string",
+      "module": "gleam.bool",
+      "purpose": "Returns a string representation of the given bool.",
+      "parameters": [
+        {
+          "name": "bool",
+          "label": null,
+          "type": "Bool"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "to_string(True)",
+      "examples": [
+        "to_string(True)",
+        "to_string(False)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_bool_guard",
+      "@type": "Function",
+      "name": "guard",
+      "module": "gleam.bool",
+      "purpose": "Run a callback function if the given bool is `False`, otherwise return a",
+      "parameters": [
+        {
+          "name": "requirement",
+          "label": "when",
+          "type": "Bool"
+        },
+        {
+          "name": "consequence",
+          "label": "return",
+          "type": "a"
+        },
+        {
+          "name": "alternative",
+          "label": "otherwise",
+          "type": "fn() -> a"
+        }
+      ],
+      "returnType": "a",
+      "whyHelpful": "this function can simulate the early-return pattern found in some other programming languages. In a procedural language: In Gleam with a `use` expression: Like everything in Gleam `use` is an expression, so it short circuits the current block, not the entire function.",
+      "examples": [
+        "\"Hello, \" <> name"
+      ]
+    },
+    {
+      "@id": "ex:gleam_bool_lazy_guard",
+      "@type": "Function",
+      "name": "lazy_guard",
+      "module": "gleam.bool",
+      "purpose": "Runs a callback function if the given bool is `True`, otherwise runs an",
+      "parameters": [
+        {
+          "name": "requirement",
+          "label": "when",
+          "type": "Bool"
+        },
+        {
+          "name": "consequence",
+          "label": "return",
+          "type": "fn() -> a"
+        },
+        {
+          "name": "alternative",
+          "label": "otherwise",
+          "type": "fn() -> a"
+        }
+      ],
+      "returnType": "a",
+      "whyHelpful": "Useful when further computation should be delayed regardless of the given bool's value. See [`guard`](#guard) for more info.",
+      "examples": [
+        "\"Hello, \" <> name",
+        "\"Welcome, \" <> name"
+      ]
+    }
+  ]
+}

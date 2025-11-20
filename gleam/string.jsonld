@@ -1,0 +1,908 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_string_module",
+      "@type": "Module",
+      "name": "gleam.string",
+      "description": "Strings in Gleam are UTF-8 binaries. They can be written in your code as\n//// text surrounded by `\"double quotes\"`.",
+      "functions": [
+        {
+          "@id": "ex:gleam_string_is_empty"
+        },
+        {
+          "@id": "ex:gleam_string_length"
+        },
+        {
+          "@id": "ex:gleam_string_reverse"
+        },
+        {
+          "@id": "ex:gleam_string_replace"
+        },
+        {
+          "@id": "ex:gleam_string_lowercase"
+        },
+        {
+          "@id": "ex:gleam_string_uppercase"
+        },
+        {
+          "@id": "ex:gleam_string_compare"
+        },
+        {
+          "@id": "ex:gleam_string_slice"
+        },
+        {
+          "@id": "ex:gleam_string_crop"
+        },
+        {
+          "@id": "ex:gleam_string_drop_start"
+        },
+        {
+          "@id": "ex:gleam_string_drop_end"
+        },
+        {
+          "@id": "ex:gleam_string_contains"
+        },
+        {
+          "@id": "ex:gleam_string_starts_with"
+        },
+        {
+          "@id": "ex:gleam_string_ends_with"
+        },
+        {
+          "@id": "ex:gleam_string_split"
+        },
+        {
+          "@id": "ex:gleam_string_split_once"
+        },
+        {
+          "@id": "ex:gleam_string_append"
+        },
+        {
+          "@id": "ex:gleam_string_concat"
+        },
+        {
+          "@id": "ex:gleam_string_repeat"
+        },
+        {
+          "@id": "ex:gleam_string_join"
+        },
+        {
+          "@id": "ex:gleam_string_pad_start"
+        },
+        {
+          "@id": "ex:gleam_string_pad_end"
+        },
+        {
+          "@id": "ex:gleam_string_trim"
+        },
+        {
+          "@id": "ex:gleam_string_trim_start"
+        },
+        {
+          "@id": "ex:gleam_string_trim_end"
+        },
+        {
+          "@id": "ex:gleam_string_pop_grapheme"
+        },
+        {
+          "@id": "ex:gleam_string_to_graphemes"
+        },
+        {
+          "@id": "ex:gleam_string_to_utf_codepoints"
+        },
+        {
+          "@id": "ex:gleam_string_from_utf_codepoints"
+        },
+        {
+          "@id": "ex:gleam_string_utf_codepoint"
+        },
+        {
+          "@id": "ex:gleam_string_utf_codepoint_to_int"
+        },
+        {
+          "@id": "ex:gleam_string_to_option"
+        },
+        {
+          "@id": "ex:gleam_string_first"
+        },
+        {
+          "@id": "ex:gleam_string_last"
+        },
+        {
+          "@id": "ex:gleam_string_capitalise"
+        },
+        {
+          "@id": "ex:gleam_string_inspect"
+        },
+        {
+          "@id": "ex:gleam_string_byte_size"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_is_empty",
+      "@type": "Function",
+      "name": "is_empty",
+      "module": "gleam.string",
+      "purpose": "Determines if a `String` is empty.",
+      "parameters": [
+        {
+          "name": "str",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "is_empty(\"\")",
+      "examples": [
+        "is_empty(\"\")",
+        "is_empty(\"the world\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_length",
+      "@type": "Function",
+      "name": "length",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Int  /// Reverses a `String`. /// /// This function has to iterate across the whole `String` so it runs in linear /// time. Avoid using this in a loop. /// /// ## Examples /// /// ```gleam /// reverse(\"stressed\") /// // -> \"desserts\" /// ``` /// pub fn reverse(string: String) -> String",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_reverse",
+      "@type": "Function",
+      "name": "reverse",
+      "module": "gleam.string",
+      "purpose": "Reverses a `String`.",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "This function has to iterate across the whole `String` so it runs in linear time. Avoid using this in a loop.",
+      "examples": [
+        "reverse(\"stressed\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_replace",
+      "@type": "Function",
+      "name": "replace",
+      "module": "gleam.string",
+      "purpose": "Creates a new `String` by replacing all occurrences of a given substring.",
+      "parameters": [
+        {
+          "name": "string",
+          "label": "in",
+          "type": "String"
+        },
+        {
+          "name": "pattern",
+          "label": "each",
+          "type": "String"
+        },
+        {
+          "name": "substitute",
+          "label": "with",
+          "type": "String"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "replace(\"www.example.com\", each: \".\", with: \"-\")",
+      "examples": [
+        "replace(\"www.example.com\", each: \".\", with: \"-\")",
+        "replace(\"a,b,c,d,e\", each: \",\", with: \"/\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_lowercase",
+      "@type": "Function",
+      "name": "lowercase",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "String  /// Creates a new `String` with all the graphemes in the input `String` converted to /// uppercase. /// /// Useful for case-insensitive comparisons and VIRTUAL YELLING. /// /// ## Examples /// /// ```gleam /// uppercase(\"skinner\") /// // -> \"SKINNER\" /// ``` /// @external(erlang, \"string\", \"uppercase\") @external(javascript, \"../gleam_stdlib.mjs\", \"uppercase\") pub fn uppercase(string: String) -> String  /// Compares two `String`s to see which is \"larger\" by comparing their graphemes. /// /// This does not compare the size or length of the given `String`s. /// /// ## Examples /// /// ```gleam /// compare(\"Anthony\", \"Anthony\") /// // -> order.Eq /// ``` /// /// ```gleam /// compare(\"A\", \"B\") /// // -> order.Lt /// ``` /// pub fn compare(a: String, b: String) -> order.Order",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_uppercase",
+      "@type": "Function",
+      "name": "uppercase",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "String  /// Compares two `String`s to see which is \"larger\" by comparing their graphemes. /// /// This does not compare the size or length of the given `String`s. /// /// ## Examples /// /// ```gleam /// compare(\"Anthony\", \"Anthony\") /// // -> order.Eq /// ``` /// /// ```gleam /// compare(\"A\", \"B\") /// // -> order.Lt /// ``` /// pub fn compare(a: String, b: String) -> order.Order",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_compare",
+      "@type": "Function",
+      "name": "compare",
+      "module": "gleam.string",
+      "purpose": "Compares two `String`s to see which is \"larger\" by comparing their graphemes.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "String"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "order.Order",
+      "whyHelpful": "This does not compare the size or length of the given `String`s.",
+      "examples": [
+        "compare(\"Anthony\", \"Anthony\")",
+        "compare(\"A\", \"B\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_slice",
+      "@type": "Function",
+      "name": "slice",
+      "module": "gleam.string",
+      "purpose": "Takes a substring given a start grapheme index and a length. Negative indexes",
+      "parameters": [
+        {
+          "name": "string",
+          "label": "from",
+          "type": "String"
+        },
+        {
+          "name": "idx",
+          "label": "at_index",
+          "type": "Int"
+        },
+        {
+          "name": "len",
+          "label": "length",
+          "type": "Int"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "This function runs in linear time with the size of the index and the length. Negative indexes are linear with the size of the input string in addition to the other costs.",
+      "examples": [
+        "slice(from: \"gleam\", at_index: 1, length: 2)",
+        "slice(from: \"gleam\", at_index: 1, length: 10)",
+        "slice(from: \"gleam\", at_index: 10, length: 3)",
+        "slice(from: \"gleam\", at_index: -2, length: 2)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_crop",
+      "@type": "Function",
+      "name": "crop",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": "from",
+          "type": "String"
+        },
+        {
+          "name": "substring",
+          "label": "before",
+          "type": "String"
+        }
+      ],
+      "returnType": "String  /// Drops *n* graphemes from the start of a `String`. /// /// This function runs in linear time with the number of graphemes to drop. /// /// ## Examples /// /// ```gleam /// drop_start(from: \"The Lone Gunmen\", up_to: 2) /// // -> \"e Lone Gunmen\" /// ``` /// pub fn drop_start(from string: String, up_to num_graphemes: Int) -> String",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_drop_start",
+      "@type": "Function",
+      "name": "drop_start",
+      "module": "gleam.string",
+      "purpose": "Drops *n* graphemes from the start of a `String`.",
+      "parameters": [
+        {
+          "name": "string",
+          "label": "from",
+          "type": "String"
+        },
+        {
+          "name": "num_graphemes",
+          "label": "up_to",
+          "type": "Int"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "This function runs in linear time with the number of graphemes to drop.",
+      "examples": [
+        "drop_start(from: \"The Lone Gunmen\", up_to: 2)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_drop_end",
+      "@type": "Function",
+      "name": "drop_end",
+      "module": "gleam.string",
+      "purpose": "Drops *n* graphemes from the end of a `String`.",
+      "parameters": [
+        {
+          "name": "string",
+          "label": "from",
+          "type": "String"
+        },
+        {
+          "name": "num_graphemes",
+          "label": "up_to",
+          "type": "Int"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "This function traverses the full string, so it runs in linear time with the size of the string. Avoid using this in a loop.",
+      "examples": [
+        "drop_end(from: \"Cigarette Smoking Man\", up_to: 2)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_contains",
+      "@type": "Function",
+      "name": "contains",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "haystack",
+          "label": "does",
+          "type": "String"
+        },
+        {
+          "name": "needle",
+          "label": "contain",
+          "type": "String"
+        }
+      ],
+      "returnType": "Bool  /// Checks whether the first `String` starts with the second one. /// /// ## Examples /// /// ```gleam /// starts_with(\"theory\", \"ory\") /// // -> False /// ``` /// @external(erlang, \"gleam_stdlib\", \"string_starts_with\") @external(javascript, \"../gleam_stdlib.mjs\", \"starts_with\") pub fn starts_with(string: String, prefix: String) -> Bool  /// Checks whether the first `String` ends with the second one. /// /// ## Examples /// /// ```gleam /// ends_with(\"theory\", \"ory\") /// // -> True /// ``` /// @external(erlang, \"gleam_stdlib\", \"string_ends_with\") @external(javascript, \"../gleam_stdlib.mjs\", \"ends_with\") pub fn ends_with(string: String, suffix: String) -> Bool  /// Creates a list of `String`s by splitting a given string on a given substring. /// /// ## Examples /// /// ```gleam /// split(\"home/gleam/desktop/\", on: \"/\") /// // -> [\"home\", \"gleam\", \"desktop\", \"\"] /// ``` /// pub fn split(x: String, on substring: String) -> List(String)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_starts_with",
+      "@type": "Function",
+      "name": "starts_with",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        },
+        {
+          "name": "prefix",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Bool  /// Checks whether the first `String` ends with the second one. /// /// ## Examples /// /// ```gleam /// ends_with(\"theory\", \"ory\") /// // -> True /// ``` /// @external(erlang, \"gleam_stdlib\", \"string_ends_with\") @external(javascript, \"../gleam_stdlib.mjs\", \"ends_with\") pub fn ends_with(string: String, suffix: String) -> Bool  /// Creates a list of `String`s by splitting a given string on a given substring. /// /// ## Examples /// /// ```gleam /// split(\"home/gleam/desktop/\", on: \"/\") /// // -> [\"home\", \"gleam\", \"desktop\", \"\"] /// ``` /// pub fn split(x: String, on substring: String) -> List(String)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_ends_with",
+      "@type": "Function",
+      "name": "ends_with",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        },
+        {
+          "name": "suffix",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Bool  /// Creates a list of `String`s by splitting a given string on a given substring. /// /// ## Examples /// /// ```gleam /// split(\"home/gleam/desktop/\", on: \"/\") /// // -> [\"home\", \"gleam\", \"desktop\", \"\"] /// ``` /// pub fn split(x: String, on substring: String) -> List(String)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_split",
+      "@type": "Function",
+      "name": "split",
+      "module": "gleam.string",
+      "purpose": "Creates a list of `String`s by splitting a given string on a given substring.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "String"
+        },
+        {
+          "name": "substring",
+          "label": "on",
+          "type": "String"
+        }
+      ],
+      "returnType": "List(String)",
+      "whyHelpful": "split(\"home/gleam/desktop/\", on: \"/\")",
+      "examples": [
+        "split(\"home/gleam/desktop/\", on: \"/\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_split_once",
+      "@type": "Function",
+      "name": "split_once",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        },
+        {
+          "name": "substring",
+          "label": "on",
+          "type": "String"
+        }
+      ],
+      "returnType": "Result(#(String, String), Nil)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_append",
+      "@type": "Function",
+      "name": "append",
+      "module": "gleam.string",
+      "purpose": "Creates a new `String` by joining two `String`s together.",
+      "parameters": [
+        {
+          "name": "first",
+          "label": "to",
+          "type": "String"
+        },
+        {
+          "name": "second",
+          "label": "suffix",
+          "type": "String"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "This function typically copies both `String`s and runs in linear time, but the exact behaviour will depend on how the runtime you are using optimises your code. Benchmark and profile your code if you need to understand its performance better.",
+      "examples": [
+        "append(to: \"butter\", suffix: \"fly\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_concat",
+      "@type": "Function",
+      "name": "concat",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "strings",
+          "label": null,
+          "type": "List(String)"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_repeat",
+      "@type": "Function",
+      "name": "repeat",
+      "module": "gleam.string",
+      "purpose": "Creates a new `String` by repeating a `String` a given number of times.",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        },
+        {
+          "name": "times",
+          "label": "times",
+          "type": "Int"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "This function runs in loglinear time.",
+      "examples": [
+        "repeat(\"ha\", times: 3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_join",
+      "@type": "Function",
+      "name": "join",
+      "module": "gleam.string",
+      "purpose": "Joins many `String`s together with a given separator.",
+      "parameters": [
+        {
+          "name": "strings",
+          "label": null,
+          "type": "List(String)"
+        },
+        {
+          "name": "separator",
+          "label": "with",
+          "type": "String"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "This function runs in linear time.",
+      "examples": [
+        "join([\"home\",\"evan\",\"Desktop\"], with: \"/\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_pad_start",
+      "@type": "Function",
+      "name": "pad_start",
+      "module": "gleam.string",
+      "purpose": "Pads the start of a `String` until it has a given length.",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        },
+        {
+          "name": "desired_length",
+          "label": "to",
+          "type": "Int"
+        },
+        {
+          "name": "pad_string",
+          "label": "with",
+          "type": "String"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "pad_start(\"121\", to: 5, with: \".\")",
+      "examples": [
+        "pad_start(\"121\", to: 5, with: \".\")",
+        "pad_start(\"121\", to: 3, with: \".\")",
+        "pad_start(\"121\", to: 2, with: \".\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_pad_end",
+      "@type": "Function",
+      "name": "pad_end",
+      "module": "gleam.string",
+      "purpose": "Pads the end of a `String` until it has a given length.",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        },
+        {
+          "name": "desired_length",
+          "label": "to",
+          "type": "Int"
+        },
+        {
+          "name": "pad_string",
+          "label": "with",
+          "type": "String"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "pad_end(\"123\", to: 5, with: \".\")",
+      "examples": [
+        "pad_end(\"123\", to: 5, with: \".\")",
+        "pad_end(\"123\", to: 3, with: \".\")",
+        "pad_end(\"123\", to: 2, with: \".\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_trim",
+      "@type": "Function",
+      "name": "trim",
+      "module": "gleam.string",
+      "purpose": "Removes whitespace on both sides of a `String`.",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "this function is the set of nonbreakable whitespace codepoints, defined as Pattern_White_Space in [Unicode Standard Annex #31][1]. [1]: https://unicode.",
+      "examples": [
+        "trim(\"  hats  \\n\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_trim_start",
+      "@type": "Function",
+      "name": "trim_start",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_trim_end",
+      "@type": "Function",
+      "name": "trim_end",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_pop_grapheme",
+      "@type": "Function",
+      "name": "pop_grapheme",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Result(#(String, String), Nil)  /// Converts a `String` to a list of /// [graphemes](https://en.wikipedia.org/wiki/Grapheme). /// /// ```gleam /// to_graphemes(\"abc\") /// // -> [\"a\", \"b\", \"c\"] /// ``` /// @external(javascript, \"../gleam_stdlib.mjs\", \"graphemes\") pub fn to_graphemes(string: String) -> List(String)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_to_graphemes",
+      "@type": "Function",
+      "name": "to_graphemes",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "List(String)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_to_utf_codepoints",
+      "@type": "Function",
+      "name": "to_utf_codepoints",
+      "module": "gleam.string",
+      "purpose": "Converts a `String` to a `List` of `UtfCodepoint`.",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "List(UtfCodepoint)",
+      "whyHelpful": "See <https://en.wikipedia.org/wiki/Code_point> and",
+      "examples": [
+        "\"a\" |> to_utf_codepoints",
+        "\"\ud83c\udff3\ufe0f\u200d\ud83c\udf08\" |> to_utf_codepoints"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_from_utf_codepoints",
+      "@type": "Function",
+      "name": "from_utf_codepoints",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "utf_codepoints",
+          "label": null,
+          "type": "List(UtfCodepoint)"
+        }
+      ],
+      "returnType": "String  /// Converts an integer to a `UtfCodepoint`. /// /// Returns an `Error` if the integer does not represent a valid UTF codepoint. /// pub fn utf_codepoint(value: Int) -> Result(UtfCodepoint, Nil)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_utf_codepoint",
+      "@type": "Function",
+      "name": "utf_codepoint",
+      "module": "gleam.string",
+      "purpose": "Converts an integer to a `UtfCodepoint`.",
+      "parameters": [
+        {
+          "name": "value",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Result(UtfCodepoint, Nil)",
+      "whyHelpful": "Returns an `Error` if the integer does not represent a valid UTF codepoint.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_utf_codepoint_to_int",
+      "@type": "Function",
+      "name": "utf_codepoint_to_int",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "cp",
+          "label": null,
+          "type": "UtfCodepoint"
+        }
+      ],
+      "returnType": "Int  /// Converts a `String` into `Option(String)` where an empty `String` becomes /// `None`. /// /// ## Examples /// /// ```gleam /// to_option(\"\") /// // -> None /// ``` /// /// ```gleam /// to_option(\"hats\") /// // -> Some(\"hats\") /// ``` /// pub fn to_option(string: String) -> Option(String)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_to_option",
+      "@type": "Function",
+      "name": "to_option",
+      "module": "gleam.string",
+      "purpose": "Converts a `String` into `Option(String)` where an empty `String` becomes",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Option(String)",
+      "whyHelpful": "to_option(\"\")",
+      "examples": [
+        "to_option(\"\")",
+        "to_option(\"hats\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_first",
+      "@type": "Function",
+      "name": "first",
+      "module": "gleam.string",
+      "purpose": "Returns the first grapheme cluster in a given `String` and wraps it in a",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Result(String, Nil)",
+      "whyHelpful": "`Result(String, Nil)`. If the `String` is empty, it returns `Error(Nil)`.",
+      "examples": [
+        "first(\"\")",
+        "first(\"icecream\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_last",
+      "@type": "Function",
+      "name": "last",
+      "module": "gleam.string",
+      "purpose": "Returns the last grapheme cluster in a given `String` and wraps it in a",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Result(String, Nil)",
+      "whyHelpful": "This function traverses the full string, so it runs in linear time with the length of the string. Avoid using this in a loop.",
+      "examples": [
+        "last(\"\")",
+        "last(\"icecream\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_capitalise",
+      "@type": "Function",
+      "name": "capitalise",
+      "module": "gleam.string",
+      "purpose": "Creates a new `String` with the first grapheme in the input `String`",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "converted to uppercase and the remaining graphemes to lowercase.",
+      "examples": [
+        "capitalise(\"mamouna\")"
+      ]
+    },
+    {
+      "@id": "ex:gleam_string_inspect",
+      "@type": "Function",
+      "name": "inspect",
+      "module": "gleam.string",
+      "purpose": "Returns a `String` representation of a term in Gleam syntax.",
+      "parameters": [
+        {
+          "name": "term",
+          "label": null,
+          "type": "anything"
+        }
+      ],
+      "returnType": "String",
+      "whyHelpful": "this function is not stable and could change at any time. The output is not suitable for parsing.",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_string_byte_size",
+      "@type": "Function",
+      "name": "byte_size",
+      "module": "gleam.string",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "",
+      "examples": []
+    }
+  ]
+}

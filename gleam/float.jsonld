@@ -1,0 +1,689 @@
+{
+  "@context": {
+    "@vocab": "https://aalang.org/spec",
+    "ex": "https://aalang.org/example/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:gleam_float_module",
+      "@type": "Module",
+      "name": "gleam.float",
+      "description": "Functions for working with floats.\n////\n//// ## Float representation\n////\n//// Floats are represented as 64 bit floating point numbers on both the Erlang\n//// and JavaScript runtimes. The floating point behaviour is native to their\n//// respective runtimes, so their exact behaviour will be slightly different on\n//// the two runtimes.\n////\n//// ### Infinity and NaN\n////\n//// Under the JavaScript runtime, exceeding the maximum (or minimum)\n//// representable value for a floating point value will result in Infinity (or\n//// -Infinity). Should you try to divide two infinities you will get NaN as a\n//// result.\n////\n//// When running on BEAM, exceeding the maximum (or minimum) representable\n//// value for a floating point value will raise an error.\n////\n//// ## Division by zero\n////\n//// Gleam runs on the Erlang virtual machine, which does not follow the IEEE\n//// 754 standard for floating point arithmetic and does not have an `Infinity`\n//// value.  In Erlang division by zero results in a crash, however Gleam does\n//// not have partial functions and operators in core so instead division by zero\n//// returns zero, a behaviour taken from Pony, Coq, and Lean.\n////\n//// This may seem unexpected at first, but it is no less mathematically valid\n//// than crashing or returning a special value. Division by zero is undefined\n//// in mathematics.",
+      "functions": [
+        {
+          "@id": "ex:gleam_float_parse"
+        },
+        {
+          "@id": "ex:gleam_float_to_string"
+        },
+        {
+          "@id": "ex:gleam_float_clamp"
+        },
+        {
+          "@id": "ex:gleam_float_compare"
+        },
+        {
+          "@id": "ex:gleam_float_loosely_compare"
+        },
+        {
+          "@id": "ex:gleam_float_loosely_equals"
+        },
+        {
+          "@id": "ex:gleam_float_min"
+        },
+        {
+          "@id": "ex:gleam_float_max"
+        },
+        {
+          "@id": "ex:gleam_float_ceiling"
+        },
+        {
+          "@id": "ex:gleam_float_floor"
+        },
+        {
+          "@id": "ex:gleam_float_round"
+        },
+        {
+          "@id": "ex:gleam_float_truncate"
+        },
+        {
+          "@id": "ex:gleam_float_to_precision"
+        },
+        {
+          "@id": "ex:gleam_float_absolute_value"
+        },
+        {
+          "@id": "ex:gleam_float_power"
+        },
+        {
+          "@id": "ex:gleam_float_square_root"
+        },
+        {
+          "@id": "ex:gleam_float_negate"
+        },
+        {
+          "@id": "ex:gleam_float_sum"
+        },
+        {
+          "@id": "ex:gleam_float_product"
+        },
+        {
+          "@id": "ex:gleam_float_random"
+        },
+        {
+          "@id": "ex:gleam_float_modulo"
+        },
+        {
+          "@id": "ex:gleam_float_divide"
+        },
+        {
+          "@id": "ex:gleam_float_add"
+        },
+        {
+          "@id": "ex:gleam_float_multiply"
+        },
+        {
+          "@id": "ex:gleam_float_subtract"
+        },
+        {
+          "@id": "ex:gleam_float_logarithm"
+        },
+        {
+          "@id": "ex:gleam_float_exponential"
+        }
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_parse",
+      "@type": "Function",
+      "name": "parse",
+      "module": "gleam.float",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "string",
+          "label": null,
+          "type": "String"
+        }
+      ],
+      "returnType": "Result(Float, Nil)  /// Returns the string representation of the provided `Float`. /// /// ## Examples /// /// ```gleam /// to_string(2.3) /// // -> \"2.3\" /// ``` /// @external(erlang, \"gleam_stdlib\", \"float_to_string\") @external(javascript, \"../gleam_stdlib.mjs\", \"float_to_string\") pub fn to_string(x: Float) -> String  /// Restricts a `Float` between a lower and upper bound. /// /// ## Examples /// /// ```gleam /// clamp(1.2, min: 1.4, max: 1.6) /// // -> 1.4 /// ``` /// pub fn clamp(x: Float, min min_bound: Float, max max_bound: Float) -> Float",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_float_to_string",
+      "@type": "Function",
+      "name": "to_string",
+      "module": "gleam.float",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "String  /// Restricts a `Float` between a lower and upper bound. /// /// ## Examples /// /// ```gleam /// clamp(1.2, min: 1.4, max: 1.6) /// // -> 1.4 /// ``` /// pub fn clamp(x: Float, min min_bound: Float, max max_bound: Float) -> Float",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_float_clamp",
+      "@type": "Function",
+      "name": "clamp",
+      "module": "gleam.float",
+      "purpose": "Restricts a `Float` between a lower and upper bound.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "min_bound",
+          "label": "min",
+          "type": "Float"
+        },
+        {
+          "name": "max_bound",
+          "label": "max",
+          "type": "Float"
+        }
+      ],
+      "returnType": "Float",
+      "whyHelpful": "clamp(1.2, min: 1.4, max: 1.6)",
+      "examples": [
+        "clamp(1.2, min: 1.4, max: 1.6)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_compare",
+      "@type": "Function",
+      "name": "compare",
+      "module": "gleam.float",
+      "purpose": "Compares two `Float`s, returning an `Order`:",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "b",
+          "label": "with",
+          "type": "Float"
+        }
+      ],
+      "returnType": "Order",
+      "whyHelpful": "`Lt` for lower than, `Eq` for equals, or `Gt` for greater than.",
+      "examples": [
+        "compare(2.0, 2.3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_loosely_compare",
+      "@type": "Function",
+      "name": "loosely_compare",
+      "module": "gleam.float",
+      "purpose": "Compares two `Float`s within a tolerance, returning an `Order`:",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "b",
+          "label": "with",
+          "type": "Float"
+        },
+        {
+          "name": "tolerance",
+          "label": "tolerating",
+          "type": "Float"
+        }
+      ],
+      "returnType": "Order",
+      "whyHelpful": "This function allows Float comparison while handling [Floating Point Imprecision](https://en.wikipedia.",
+      "examples": [
+        "loosely_compare(5.0, with: 5.3, tolerating: 0.5)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_loosely_equals",
+      "@type": "Function",
+      "name": "loosely_equals",
+      "module": "gleam.float",
+      "purpose": "Checks for equality of two `Float`s within a tolerance,",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "b",
+          "label": "with",
+          "type": "Float"
+        },
+        {
+          "name": "tolerance",
+          "label": "tolerating",
+          "type": "Float"
+        }
+      ],
+      "returnType": "Bool",
+      "whyHelpful": "This function allows Float comparison while handling [Floating Point Imprecision](https://en.wikipedia.",
+      "examples": [
+        "loosely_equals(5.0, with: 5.3, tolerating: 0.5)",
+        "loosely_equals(5.0, with: 5.1, tolerating: 0.1)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_min",
+      "@type": "Function",
+      "name": "min",
+      "module": "gleam.float",
+      "purpose": "Compares two `Float`s, returning the smaller of the two.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Float",
+      "whyHelpful": "min(2.0, 2.3)",
+      "examples": [
+        "min(2.0, 2.3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_max",
+      "@type": "Function",
+      "name": "max",
+      "module": "gleam.float",
+      "purpose": "Compares two `Float`s, returning the larger of the two.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Float",
+      "whyHelpful": "max(2.0, 2.3)",
+      "examples": [
+        "max(2.0, 2.3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_ceiling",
+      "@type": "Function",
+      "name": "ceiling",
+      "module": "gleam.float",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Float  /// Rounds the value to the next lowest whole number as a `Float`. /// /// ## Examples /// /// ```gleam /// floor(2.3) /// // -> 2.0 /// ``` /// @external(erlang, \"math\", \"floor\") @external(javascript, \"../gleam_stdlib.mjs\", \"floor\") pub fn floor(x: Float) -> Float  /// Rounds the value to the nearest whole number as an `Int`. /// /// ## Examples /// /// ```gleam /// round(2.3) /// // -> 2 /// ``` /// /// ```gleam /// round(2.5) /// // -> 3 /// ``` /// @external(erlang, \"erlang\", \"round\") pub fn round(x: Float) -> Int",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_float_floor",
+      "@type": "Function",
+      "name": "floor",
+      "module": "gleam.float",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Float  /// Rounds the value to the nearest whole number as an `Int`. /// /// ## Examples /// /// ```gleam /// round(2.3) /// // -> 2 /// ``` /// /// ```gleam /// round(2.5) /// // -> 3 /// ``` /// @external(erlang, \"erlang\", \"round\") pub fn round(x: Float) -> Int",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_float_round",
+      "@type": "Function",
+      "name": "round",
+      "module": "gleam.float",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Int",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_float_truncate",
+      "@type": "Function",
+      "name": "truncate",
+      "module": "gleam.float",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Int  /// Converts the value to a given precision as a `Float`. /// The precision is the number of allowed decimal places. /// Negative precisions are allowed and force rounding /// to the nearest tenth, hundredth, thousandth etc. /// /// ## Examples /// /// ```gleam /// to_precision(2.43434348473, precision: 2) /// // -> 2.43 /// ``` /// /// ```gleam /// to_precision(547890.453444, precision: -3) /// // -> 548000.0 /// ``` /// pub fn to_precision(x: Float, precision: Int) -> Float",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_float_to_precision",
+      "@type": "Function",
+      "name": "to_precision",
+      "module": "gleam.float",
+      "purpose": "Converts the value to a given precision as a `Float`.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "precision",
+          "label": null,
+          "type": "Int"
+        }
+      ],
+      "returnType": "Float",
+      "whyHelpful": "The precision is the number of allowed decimal places.",
+      "examples": [
+        "to_precision(2.43434348473, precision: 2)",
+        "to_precision(547890.453444, precision: -3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_absolute_value",
+      "@type": "Function",
+      "name": "absolute_value",
+      "module": "gleam.float",
+      "purpose": "Returns the absolute value of the input as a `Float`.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Float",
+      "whyHelpful": "absolute_value(-12.5)",
+      "examples": [
+        "absolute_value(-12.5)",
+        "absolute_value(10.2)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_power",
+      "@type": "Function",
+      "name": "power",
+      "module": "gleam.float",
+      "purpose": "Returns the results of the base being raised to the power of the",
+      "parameters": [
+        {
+          "name": "base",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "exponent",
+          "label": "of",
+          "type": "Float"
+        }
+      ],
+      "returnType": "Result(Float, Nil)",
+      "whyHelpful": "exponent, as a `Float`.",
+      "examples": [
+        "power(2.0, -1.0)",
+        "power(2.0, 2.0)",
+        "power(8.0, 1.5)",
+        "4.0 |> power(of: 2.0)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_square_root",
+      "@type": "Function",
+      "name": "square_root",
+      "module": "gleam.float",
+      "purpose": "Returns the square root of the input as a `Float`.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Result(Float, Nil)",
+      "whyHelpful": "square_root(4.0)",
+      "examples": [
+        "square_root(4.0)",
+        "square_root(-16.0)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_negate",
+      "@type": "Function",
+      "name": "negate",
+      "module": "gleam.float",
+      "purpose": "Returns the negative of the value provided.",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Float",
+      "whyHelpful": "negate(1.0)",
+      "examples": [
+        "negate(1.0)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_sum",
+      "@type": "Function",
+      "name": "sum",
+      "module": "gleam.float",
+      "purpose": "Sums a list of `Float`s.",
+      "parameters": [
+        {
+          "name": "numbers",
+          "label": null,
+          "type": "List(Float)"
+        }
+      ],
+      "returnType": "Float",
+      "whyHelpful": "sum([1.0, 2.2, 3.3])",
+      "examples": [
+        "sum([1.0, 2.2, 3.3])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_product",
+      "@type": "Function",
+      "name": "product",
+      "module": "gleam.float",
+      "purpose": "Multiplies a list of `Float`s and returns the product.",
+      "parameters": [
+        {
+          "name": "numbers",
+          "label": null,
+          "type": "List(Float)"
+        }
+      ],
+      "returnType": "Float",
+      "whyHelpful": "product([2.5, 3.2, 4.2])",
+      "examples": [
+        "product([2.5, 3.2, 4.2])"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_random",
+      "@type": "Function",
+      "name": "random",
+      "module": "gleam.float",
+      "purpose": "",
+      "parameters": [],
+      "returnType": "Float  /// Computes the modulo of an float division of inputs as a `Result`. /// /// Returns division of the inputs as a `Result`: If the given divisor equals /// `0`, this function returns an `Error`. /// /// ## Examples /// /// ```gleam /// modulo(13.3, by: 3.3) /// // -> Ok(0.1) /// ``` /// /// ```gleam /// modulo(-13.3, by: 3.3) /// // -> Ok(3.2) /// ``` /// /// ```gleam /// modulo(13.3, by: -3.3) /// // -> Ok(-3.2) /// ``` /// /// ```gleam /// modulo(-13.3, by: -3.3) /// // -> Ok(-0.1) /// ``` /// pub fn modulo(dividend: Float, by divisor: Float) -> Result(Float, Nil)",
+      "whyHelpful": "",
+      "examples": []
+    },
+    {
+      "@id": "ex:gleam_float_modulo",
+      "@type": "Function",
+      "name": "modulo",
+      "module": "gleam.float",
+      "purpose": "Computes the modulo of an float division of inputs as a `Result`.",
+      "parameters": [
+        {
+          "name": "dividend",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "divisor",
+          "label": "by",
+          "type": "Float"
+        }
+      ],
+      "returnType": "Result(Float, Nil)",
+      "whyHelpful": "Returns division of the inputs as a `Result`: If the given divisor equals",
+      "examples": [
+        "modulo(13.3, by: 3.3)",
+        "modulo(-13.3, by: 3.3)",
+        "modulo(13.3, by: -3.3)",
+        "modulo(-13.3, by: -3.3)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_divide",
+      "@type": "Function",
+      "name": "divide",
+      "module": "gleam.float",
+      "purpose": "Returns division of the inputs as a `Result`.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "b",
+          "label": "by",
+          "type": "Float"
+        }
+      ],
+      "returnType": "Result(Float, Nil)",
+      "whyHelpful": "divide(0.0, 1.0)",
+      "examples": [
+        "divide(0.0, 1.0)",
+        "divide(1.0, 0.0)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_add",
+      "@type": "Function",
+      "name": "add",
+      "module": "gleam.float",
+      "purpose": "Adds two floats together.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Float",
+      "whyHelpful": "It's the function equivalent of the `+.` operator.",
+      "examples": [
+        "add(1.0, 2.0)",
+        "list.fold([1.0, 2.0, 3.0], 0.0, add)",
+        "3.0 |> add(2.0)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_multiply",
+      "@type": "Function",
+      "name": "multiply",
+      "module": "gleam.float",
+      "purpose": "Multiplies two floats together.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Float",
+      "whyHelpful": "It's the function equivalent of the `*.` operator.",
+      "examples": [
+        "multiply(2.0, 4.0)",
+        "list.fold([2.0, 3.0, 4.0], 1.0, multiply)",
+        "3.0 |> multiply(2.0)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_subtract",
+      "@type": "Function",
+      "name": "subtract",
+      "module": "gleam.float",
+      "purpose": "Subtracts one float from another.",
+      "parameters": [
+        {
+          "name": "a",
+          "label": null,
+          "type": "Float"
+        },
+        {
+          "name": "b",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Float",
+      "whyHelpful": "It's the function equivalent of the `-.` operator.",
+      "examples": [
+        "subtract(3.0, 1.0)",
+        "list.fold([1.0, 2.0, 3.0], 10.0, subtract)",
+        "3.0 |> subtract(_, 2.0)",
+        "3.0 |> subtract(2.0, _)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_logarithm",
+      "@type": "Function",
+      "name": "logarithm",
+      "module": "gleam.float",
+      "purpose": "Returns the natural logarithm (base e) of the given as a `Result`. If the",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Result(Float, Nil)",
+      "whyHelpful": "input is less than or equal to 0, returns `Error(Nil)`.",
+      "examples": [
+        "logarithm(1.0)",
+        "logarithm(2.718281828459045)  // e",
+        "logarithm(0.0)",
+        "logarithm(-1.0)"
+      ]
+    },
+    {
+      "@id": "ex:gleam_float_exponential",
+      "@type": "Function",
+      "name": "exponential",
+      "module": "gleam.float",
+      "purpose": "",
+      "parameters": [
+        {
+          "name": "x",
+          "label": null,
+          "type": "Float"
+        }
+      ],
+      "returnType": "Float",
+      "whyHelpful": "",
+      "examples": []
+    }
+  ]
+}
